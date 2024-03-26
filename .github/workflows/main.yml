@@ -27,5 +27,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
-          branch: gh-pages  # Cambia "gh-pages" al nombre de tu rama de despliegue si es diferente
-          folder: static    # Cambia "build" al directorio de tu aplicación si es diferente
+          token: ${{ secrets.TOKEN_DEPLOY }}  # Utiliza tu nuevo token de acceso personal aquí
+
