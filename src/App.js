@@ -1,24 +1,42 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import MenuBar from './Navegacion/Menubar';
+import {theme, useTheme} from '@primer/react';
+import {ThemeProvider as PrimerThemeProvider} from '@primer/react';
+import { ThemeProvider as PrimerBrandThemeProvider } from '@primer/react-brand';
+import deepmerge from 'deepmerge'
+import Inicio from './Pantallas/Inicio';
+import '@primer/react-brand/lib/css/main.css'
+import Tienda from './Pantallas/Tienda';
+import Detalles from './Pantallas/Detalles';
+
+
 
 function App() {
+
+  const {setDayScheme, setNightScheme} = useTheme();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PrimerThemeProvider colorMode='dark' theme={theme} >
+ 
+      <PrimerBrandThemeProvider style={{
+      backgroundColor: 'var(--brand-color-canvas-default)',
+    }} colorMode='dark'>
+        <Router>
+          <MenuBar />
+          <Switch>
+            <Route exact path="/" component={Inicio} /> 
+            <Route exact path="/Tienda" component={Tienda}/>  
+            <Route exact path="" component={Detalles}/>      
+          </Switch>
+        </Router>
+
+      </PrimerBrandThemeProvider>
+
+
+
+    </PrimerThemeProvider>
+
   );
 }
 
