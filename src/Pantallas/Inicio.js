@@ -3,6 +3,7 @@ import {Button, CTABanner, Heading, Image, River, Text} from '@primer/react-bran
 import { Container } from '@material-ui/core';
 import useStyles from '../Themes/useStyles';
 
+
 const Inicio = () => {
     const classes = useStyles();
   return (
@@ -19,7 +20,7 @@ const Inicio = () => {
                         elementum.
                     </CTABanner.Description>
                     <CTABanner.ButtonGroup>
-                        <Button as='a' href='/Tienda'>Tienda</Button>
+                        <Button as="a" href="/Tienda"  >Tienda</Button>
                     </CTABanner.ButtonGroup>
                 </CTABanner>
             </Container>            
