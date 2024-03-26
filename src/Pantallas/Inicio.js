@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, CTABanner, Card, Heading, Hero, Image, River, SectionIntro, Testimonial, Text, Timeline} from '@primer/react-brand';
+import {Button, CTABanner, Heading, Image, River, Text} from '@primer/react-brand';
 import { Container } from '@material-ui/core';
 import useStyles from '../Themes/useStyles';
 

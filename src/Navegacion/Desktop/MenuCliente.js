@@ -2,10 +2,9 @@ import React from "react";
 
 import useStyles from "../../Themes/useStyles";
 
-import { ActionList, ActionMenu, Avatar, IconButton, Link, Octicon, TabNav, Text } from "@primer/react";
-import { ArchiveIcon, CopilotIcon, MarkGithubIcon, PasteIcon, PersonIcon, SignOutIcon, SquirrelIcon, StrikethroughIcon } from "@primer/octicons-react";
-import { Container, Typography } from "@material-ui/core";
-import { SubNav } from "@primer/react-brand";
+import { ActionList, ActionMenu, Avatar, Octicon, } from "@primer/react";
+import { PasteIcon, PersonIcon, SignOutIcon } from "@primer/octicons-react";
+import { Container} from "@material-ui/core";
 
 const MenuCliente = (props) => {
   const classes = useStyles();

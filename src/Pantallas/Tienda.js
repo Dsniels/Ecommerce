@@ -1,5 +1,5 @@
-import { CopilotIcon, ZapIcon } from '@primer/octicons-react';
-import { Box, Card, Grid, Heading, Stack, ThemeProvider } from '@primer/react-brand';
+
+import { Box, Card, Heading, Stack, ThemeProvider } from '@primer/react-brand';
 import React from 'react';
 import {Pagination} from '@primer/react'
 
@@ -32,7 +32,7 @@ export default function Tienda() {
                 ctaText='Detalles'
                 href="https://github.com"
                 style={{
-                ['--brand-color-accent-primary']: 'var(--base-color-scale-lime-2)',
+               
                 width: '300px', // Ajusta el ancho aquí
                 height: '400px', // Ajusta el alto aquí
                 display: 'flex',
@@ -63,7 +63,7 @@ export default function Tienda() {
             <Card ctaText='Detalles'
                 href="https://github.com"
                 style={{
-                ['--brand-color-accent-primary']: 'var(--base-color-scale-lime-2)',
+               
                 width: '300px', // Ajusta el ancho aquí
                 height: '400px', // Ajusta el alto aquí
                 display: 'flex',
@@ -104,7 +104,7 @@ export default function Tienda() {
                 ctaText='Detalles'
                 href="https://github.com"
                 style={{
-                ['--brand-color-accent-primary']: 'var(--base-color-scale-lime-2)',
+                
                 width: '300px', // Ajusta el ancho aquí
                 height: '400px', // Ajusta el alto aquí
                 display: 'flex',
@@ -135,7 +135,7 @@ export default function Tienda() {
             <Card ctaText='Detalles'
                 href="https://github.com"
                 style={{
-                ['--brand-color-accent-primary']: 'var(--base-color-scale-lime-2)',
+
                 width: '300px', // Ajusta el ancho aquí
                 height: '400px', // Ajusta el alto aquí
                 display: 'flex',

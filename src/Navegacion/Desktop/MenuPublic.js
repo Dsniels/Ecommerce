@@ -1,12 +1,9 @@
 import React from "react";
-import useStyles from '../../Themes/useStyles';
-import { Button, Container, Icon } from "@material-ui/core";
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import { Container } from "@material-ui/core";
 import { SubNav } from "@primer/react-brand";
 
 
 const MenuPublic = () => {
-    const classes = useStyles();
 
 
     return(
