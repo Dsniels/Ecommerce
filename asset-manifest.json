@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/miapp/Inicio/static/css/main.81d97111.css",
-    "main.js": "/miapp/Inicio/static/js/main.1736b78d.js",
-    "static/js/453.67622312.chunk.js": "/miapp/Inicio/static/js/453.67622312.chunk.js",
-    "index.html": "/miapp/Inicio/index.html",
-    "main.81d97111.css.map": "/miapp/Inicio/static/css/main.81d97111.css.map",
-    "main.1736b78d.js.map": "/miapp/Inicio/static/js/main.1736b78d.js.map",
-    "453.67622312.chunk.js.map": "/miapp/Inicio/static/js/453.67622312.chunk.js.map"
+    "main.css": "/miapp/static/css/main.81d97111.css",
+    "main.js": "/miapp/static/js/main.7cbad593.js",
+    "static/js/453.67622312.chunk.js": "/miapp/static/js/453.67622312.chunk.js",
+    "index.html": "/miapp/index.html",
+    "main.81d97111.css.map": "/miapp/static/css/main.81d97111.css.map",
+    "main.7cbad593.js.map": "/miapp/static/js/main.7cbad593.js.map",
+    "453.67622312.chunk.js.map": "/miapp/static/js/453.67622312.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.81d97111.css",
-    "static/js/main.1736b78d.js"
+    "static/js/main.7cbad593.js"
   ]
 }
