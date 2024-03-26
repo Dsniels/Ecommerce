@@ -22,6 +22,7 @@ function App() {
     }} colorMode='dark'>
         <Router>
           <MenuBar />
+          <Inicio />
           <Switch>
             <Route exact path="/" component={Inicio} /> 
             <Route exact path="/Tienda" component={Tienda}/>  
