@@ -1,5 +1,4 @@
-
-name: Github Pages Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -10,37 +9,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix: 
-        node-version: [18.x]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Install and Build
-        run: npm install --legacy-peer-deps && npm run build
-
-  deploy:
-    needs: build
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install and Build
+        run: |
+          npm install --legacy-peer-deps
+          npm run build
+
+  deploy:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: actions/deploy-pages@v4
         with:
-          branch: gh-pages  # Asegúrate de cambiarlo si tu rama de despliegue es diferente
-          folder: static  
+          branch: gh-pages  # Cambia "gh-pages" al nombre de tu rama de despliegue si es diferente
+          folder: static    # Cambia "build" al directorio de tu aplicación si es diferente
