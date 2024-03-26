@@ -44,11 +44,9 @@ const Inicio = (props) => {
 
                 </River.Visual>
                 <River.Content>
-                    <Heading>Break issues into actionable tasks</Heading>
+                    <Heading>Producto nuevo</Heading>
                     <Text>
-                    Tackle complex issues with task lists and track their status with new
-                    progress indicators. Convert tasks into their own issues and navigate your
-                    work hierarchy.
+                        das asdkn  uiebd ajsbda ubvc as dsald
                     </Text>
                 </River.Content>
             </River>
