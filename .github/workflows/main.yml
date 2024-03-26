@@ -4,25 +4,27 @@ on:
   push:
     branches:
       - main
+  pull_request :
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy :
+      matrix:
+        node-version: [18.x]
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install and Build
         run: |
           npm install --legacy-peer-deps
           npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: gh-pages  # Nombre del artefacto
-          path: static    # Ruta al directorio que deseas subir como artefacto
 
   deploy:
     needs: build
@@ -38,7 +40,9 @@ jobs:
         with:
           name: gh-pages  # Nombre del artefacto
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
-        with:
-          token: ${{ secrets.TOKEN_DEPLOY }}  # Utiliza tu nuevo token de acceso personal aquí
+      - name: Deploy with gh-pages
+        run: |
+            git remote set-url origin https://git:$(GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+            npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+         GITHUB_TOKEN: ${{ secrets. GITHUB_TOKEN }}
