@@ -17,7 +17,7 @@ export default function Tienda() {
                     regular: 'vertical',
                     wide: 'horizontal',
                 }} padding="none">
-                <Card ctaText='Detalles' style={{ width: '300px', height: '400px', display: 'flex', flexDirection: 'column' }}> {/* Ajusta el ancho y alto aquí */}
+                <Card ctaText='Detalles' href='/Detalles' style={{ width: '300px', height: '400px', display: 'flex', flexDirection: 'column' }}> {/* Ajusta el ancho y alto aquí */}
                         <Card.Image
                             src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
                             alt="placeholder, blank area with an gray background color"
@@ -49,7 +49,7 @@ export default function Tienda() {
                 $4200
                 </Card.Description>
             </Card>
-            <Card ctaText='Detalles' href="https://github.com" style={{ width: '300px', height: '400px', display: 'flex', flexDirection: 'column' }}> {/* Ajusta el ancho y alto aquí */}
+            <Card ctaText='Detalles'  href="/Detalles" style={{ width: '300px', height: '400px', display: 'flex', flexDirection: 'column' }}> {/* Ajusta el ancho y alto aquí */}
                 <Card.Image
                     src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
                     alt="placeholder, blank area with an gray background color"
@@ -89,7 +89,7 @@ export default function Tienda() {
                     regular: 'vertical',
                     wide: 'horizontal',
                 }} padding="none">
-                <Card ctaText='Detalles' style={{ width: '300px', height: '400px', display: 'flex', flexDirection: 'column' }}> {/* Ajusta el ancho y alto aquí */}
+                <Card ctaText='Detalles' href='/Detalles' style={{ width: '300px', height: '400px', display: 'flex', flexDirection: 'column' }}> {/* Ajusta el ancho y alto aquí */}
                         <Card.Image
                             src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
                             alt="placeholder, blank area with an gray background color"
