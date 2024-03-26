@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
-const theme = createTheme();
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -75,9 +74,6 @@ const useStyles = makeStyles((theme) => ({
         color: "inherit",
         textDecoration :"none",
         marginLeft:20,
-         display: 'flex',
-        alignItems: 'center',
-        textDecoration: 'none',
         [theme.breakpoints.up('sm')]: {
         marginLeft: '10px',
         },

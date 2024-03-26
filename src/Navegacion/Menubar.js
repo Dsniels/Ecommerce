@@ -1,11 +1,10 @@
-import { Avatar, Header, Octicon, TabNav } from "@primer/react";
-import { ArchiveIcon, CalendarIcon, CopilotIcon, FlameIcon, HomeIcon, MarkGithubIcon, SquareFillIcon, SquareIcon, SquirrelIcon } from "@primer/octicons-react";
-import { AppBar, Container, Toolbar, Typography, IconButton, Drawer, List, Select, Button, Icon} from '@material-ui/core';
+import {  Header, Octicon,  } from "@primer/react";
+import {  SquirrelIcon } from "@primer/octicons-react";
+import {  Container, Toolbar, Typography, IconButton, Drawer, List,  Icon} from '@material-ui/core';
 import React, { useState } from 'react';
 import useStyles from '../Themes/useStyles';
 import { Link } from 'react-router-dom';
 import MenuCliente from "./Desktop/MenuCliente";
-import MenuPublic from "./Desktop/MenuPublic";
 import MenuMobile from "./Mobile/MenuMobile";
 
 
