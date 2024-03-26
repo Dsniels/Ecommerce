@@ -18,6 +18,12 @@ jobs:
           npm install --legacy-peer-deps
           npm run build
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: gh-pages  # Nombre del artefacto
+          path: static    # Ruta al directorio que deseas subir como artefacto
+
   deploy:
     needs: build
 
@@ -27,11 +33,12 @@ jobs:
       id-token: write
 
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: gh-pages  # Nombre del artefacto
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
-    
-          name: gh-pages  # Nombre del artefacto
-          path: static
           token: ${{ secrets.TOKEN_DEPLOY }}  # Utiliza tu nuevo token de acceso personal aquí
-
