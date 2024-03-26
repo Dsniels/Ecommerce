@@ -41,7 +41,7 @@ const MenuBar = () => {
                             </Drawer>                  
                             <div className={classes.grow}>   
                                 
-                                <Link color="inherit" to='/' className={classes.LinkBarLogo} underline="none">
+                                <Link color="inherit" to='/Inicio' className={classes.LinkBarLogo} underline="none">
                                     <Octicon icon={SquirrelIcon} size={32} sx={{mr:2}}></Octicon>
                                     <Typography variant="h5">Shop</Typography>
                                 </Link>

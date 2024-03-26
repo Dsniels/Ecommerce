@@ -9,6 +9,7 @@ import Inicio from './Pantallas/Inicio';
 import '@primer/react-brand/lib/css/main.css'
 import Tienda from './Pantallas/Tienda';
 import Detalles from './Pantallas/Detalles';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
@@ -23,9 +24,10 @@ function App() {
         <Router>
           <MenuBar />
           <Switch>
-            <Route exact path="/" component={Inicio} /> 
+            <Route exact path="/Inicio" component={Inicio} /> 
             <Route exact path="/Tienda" component={Tienda}/>  
-            <Route exact path="/Detalles" component={Detalles}/>      
+            <Route exact path="/Detalles" component={Detalles}/> 
+            <Redirect from="/" to="/Inicio" />     
           </Switch>
         </Router>
 
