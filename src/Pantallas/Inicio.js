@@ -4,8 +4,13 @@ import { Container } from '@material-ui/core';
 import useStyles from '../Themes/useStyles';
 
 
-const Inicio = () => {
+const Inicio = (props) => {
     const classes = useStyles();
+    
+
+    const tienda = () => {  
+        props.history.push('/Tienda');
+    }
   return (
     <>
         <section style={{marginTop:100, padding:3}}>
@@ -20,7 +25,9 @@ const Inicio = () => {
                         elementum.
                     </CTABanner.Description>
                     <CTABanner.ButtonGroup>
-                        <Button as="a" href="/Tienda"  >Tienda</Button>
+                        <Button onClick={tienda} >
+                            Tienda
+                        </Button>
                     </CTABanner.ButtonGroup>
                 </CTABanner>
             </Container>            
