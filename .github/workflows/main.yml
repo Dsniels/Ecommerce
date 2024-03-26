@@ -19,9 +19,7 @@ jobs:
 
       - name : Install and Build
         run : npm install --legacy-peer-deps && npm run build
-
-      - name : Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch : gh-pages
-          folder: build 
+        
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
