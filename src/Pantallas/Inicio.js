@@ -41,7 +41,6 @@ const Inicio = (props) => {
                             alt="placeholder, blank area with an gray background color"
                             aspectRatio="16:9"
                     />
-
                 </River.Visual>
                 <River.Content>
                     <Heading>Producto nuevo</Heading>
