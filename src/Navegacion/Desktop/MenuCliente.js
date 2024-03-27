@@ -1,9 +1,7 @@
 import React from "react";
-
 import useStyles from "../../Themes/useStyles";
-
 import { ActionList, ActionMenu, Avatar, Octicon, } from "@primer/react";
-import { PasteIcon, PersonIcon, SignOutIcon } from "@primer/octicons-react";
+import { PasteIcon, PersonIcon, SignInIcon, SignOutIcon } from "@primer/octicons-react";
 import { Container} from "@material-ui/core";
 
 const MenuCliente = (props) => {
@@ -39,6 +37,12 @@ const MenuCliente = (props) => {
                 <Octicon icon={SignOutIcon} size={30} className={classes.SelectIcon}></Octicon>
               </ActionList.LeadingVisual>
               Cerrar Sesion
+            </ActionList.Item>
+            <ActionList.Item className={classes.ActionListItems}>
+              <ActionList.LeadingVisual>
+                <Octicon icon={SignInIcon} size={30} className={classes.SelectIcon}></Octicon>
+              </ActionList.LeadingVisual>
+              Iniciar Sesion
             </ActionList.Item>
           </ActionList>
         </ActionMenu.Overlay>
