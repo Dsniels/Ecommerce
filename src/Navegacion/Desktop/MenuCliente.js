@@ -26,20 +26,20 @@ const MenuCliente = (props) => {
 
 
       {/* ActionMenu */}
-      <ActionMenu >
+      <ActionMenu renderAnchor={null} >
         <ActionMenu.Button style={{ fontSize: 16, color: 'white', paddingLeft: 10, textAlign: 'center', display: 'flex', backgroundColor: 'transparent' }} variant="invisible">
           <Avatar size={50} className={classes.avatarPerfilAppBar} src="https://avatars.githubusercontent.com/u/92997159?v=4" />
           Daniel Salazar
         </ActionMenu.Button>
-        <ActionMenu.Overlay align="center" side="outside-bottom">
+        <ActionMenu.Overlay  align="center" side="outside-bottom">
           <ActionList style={{ display: 'flex' }} className={classes.ActionList}>
-            <ActionList.Item onClick={perfil} style={{ display: 'flex' }} className={classes.ActionListItems}>
+            <ActionList.Item onSelect={perfil} style={{ display: 'flex' }} className={classes.ActionListItems}>
               <ActionList.LeadingVisual>
                 <Octicon className={classes.SelectIcon} size={30} icon={PersonIcon}></Octicon>
               </ActionList.LeadingVisual>
               Mi Perfil
             </ActionList.Item>
-            <ActionList.Item onClick={pedidos} className={classes.ActionListItems}>
+            <ActionList.Item onSelect={pedidos} className={classes.ActionListItems}>
               <ActionList.LeadingVisual>
                 <Octicon icon={PasteIcon} size={30} className={classes.SelectIcon}></Octicon>
               </ActionList.LeadingVisual>
@@ -52,7 +52,7 @@ const MenuCliente = (props) => {
               </ActionList.LeadingVisual>
               Cerrar Sesion
             </ActionList.Item>
-            <ActionList.Item onClick={iniciarSesion} className={classes.ActionListItems}>
+            <ActionList.Item onSelect={iniciarSesion} className={classes.ActionListItems}>
               <ActionList.LeadingVisual>
                 <Octicon icon={SignInIcon} size={30} className={classes.SelectIcon}></Octicon>
               </ActionList.LeadingVisual>
