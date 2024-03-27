@@ -10,6 +10,7 @@ import '@primer/react-brand/lib/css/main.css'
 import Tienda from './Pantallas/Tienda';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import Detalles from './Pantallas/Detalles';
+import Perfil from './Pantallas/Seguridad/Perfil';
 
 
 
@@ -27,6 +28,7 @@ function App() {
             <Route exact path="/Inicio" component={Inicio} /> 
             <Route exact path="/Tienda" component={Tienda}/>  
             <Route exact path="/Detalles" component={Detalles}/> 
+            <Route exact path="/Perfil" component={Perfil} />
             <Redirect from="/" to="/Inicio" />     
           </Switch>
         </Router>
