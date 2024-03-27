@@ -33,7 +33,7 @@ import { GitCommitIcon } from "@primer/octicons-react";
 const Perfil = () => {
   const classes = useStyles();
   return (
-    <PageLayout columnGap="30px" rowGap="30px" >
+    <PageLayout sx={{height:'1080px'}} columnGap="30px" rowGap="30px" >
       <PageLayout.Header >
         <Box
           style={{
@@ -42,13 +42,19 @@ const Perfil = () => {
             fontSizeAdjust: 10,
             fontWeight: "bold",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "start",
+            '@media (max-width: 600px)': { // Consulta de medios para dispositivos móviles
+              textAlign: 'center', // Centrar el texto en dispositivos móviles
+            },
+            textAlign:'start',
+            marginX: 'auto',
+            maxWidth: '80%',
           }}
         >
-          <h1>Mi Perfil</h1>
+          <Heading as="h2" style={{marginLeft:'40px',fontSize:'5em', fontFamily:'monospace'}}>Perfil</Heading>
         </Box>
       </PageLayout.Header>
-      <PageLayout.Pane position="start" divider='line' padding="normal" resizable={false} sx={{overflow:'hidden' , display:'flex', justifyContent:'center' ,marginBottom:'50px', height:'500px' }} width='large' >
+      <PageLayout.Pane  position="start" divider='line' padding="normal" resizable={false} sx={{overflow:'hidden' , display:'flex', justifyContent:'center' ,marginBottom:'50px', height:'auto' }} width='large' >
         <Box style={{ width: ['300px',"200px"], height: "auto",marginTop:'50px', marginBottom:'50px' }}>
           <Stack  direction="vertical">
             <Image
@@ -83,7 +89,7 @@ const Perfil = () => {
               />
               <ButtonGroup>
                 <Button variant="primary">Editar</Button>
-                <Button variant="subtle">Actualizar</Button>
+
               </ButtonGroup>
             </FormControl>
           </Stack>
@@ -112,10 +118,10 @@ const Perfil = () => {
           </Timeline>
         </Box> */}
       </PageLayout.Pane>
-      <PageLayout.Content width="medium" padding="none" sx={{minWidth:'300px',display:'inline-flex'  ,height:'auto' }} >
+      <PageLayout.Content width="medium" padding="none" sx={{gap:4,marginX:'30px',minWidth:'300px',display:'inline-flex'  ,height:'auto' }} >
         <Box style={{width:'100%'}}>
-          <Timeline >
-            <Heading style={{margin:10, paddingBottom:20}}>Mis pedidos</Heading>
+          <Timeline  >
+            <Heading as="h5" style={{margin:10, paddingBottom:20}}>Mis pedidos</Heading>
             <Timeline.Item>
               <Timeline.Badge>
                 <Octicon icon={GitCommitIcon} />
