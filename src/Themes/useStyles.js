@@ -103,9 +103,15 @@ const useStyles = makeStyles((theme) => ({
     listItem:{
         padding : 0
     },
+    NavLisMobile:{
+        fontSize:10
+    },
+    NavLisMobileItem:{
+        marginTop: 10
+    },
     LinkBarmobile:{
         display : "inline-flex",
-        alignItems: "center", 
+ 
         width : "100%",
         padding: "8px 16px",
         color: "inherit",
@@ -124,7 +130,9 @@ const useStyles = makeStyles((theme) => ({
     },
     sectionMobile: {
         display: "flex",
+        backgroundColor: "transparent",
         flexGrow: 1,
+        width: 50,
         justifyContent: "flex-start", // Alinear a la izquierda en pantallas pequeñas
         [theme.breakpoints.up('md')]: {
         display: "none",
