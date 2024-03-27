@@ -3,10 +3,24 @@ import useStyles from "../../Themes/useStyles";
 import { ActionList, ActionMenu, Avatar, Octicon, } from "@primer/react";
 import { PasteIcon, PersonIcon, SignInIcon, SignOutIcon } from "@primer/octicons-react";
 import { Container} from "@material-ui/core";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
+
 
 const MenuCliente = (props) => {
   const classes = useStyles();
-  
+  const history = useHistory();
+  const perfil = () => {
+    history.push('/Perfil');
+  };
+  const pedidos = () => {
+    history.push("/Pedidos");
+  };
+  const iniciarSesion = () => {
+    history.push("/IniciarSesion");
+  };
+
+
+
   return (
     <Container className={classes.linkBarDesktop} style={{ display: 'flex', alignItems: 'center' }}>
 
@@ -19,13 +33,13 @@ const MenuCliente = (props) => {
         </ActionMenu.Button>
         <ActionMenu.Overlay align="center" side="outside-bottom">
           <ActionList style={{ display: 'flex' }} className={classes.ActionList}>
-            <ActionList.Item style={{ display: 'flex' }} className={classes.ActionListItems}>
+            <ActionList.Item onClick={perfil} style={{ display: 'flex' }} className={classes.ActionListItems}>
               <ActionList.LeadingVisual>
                 <Octicon className={classes.SelectIcon} size={30} icon={PersonIcon}></Octicon>
               </ActionList.LeadingVisual>
               Mi Perfil
             </ActionList.Item>
-            <ActionList.Item className={classes.ActionListItems}>
+            <ActionList.Item onClick={pedidos} className={classes.ActionListItems}>
               <ActionList.LeadingVisual>
                 <Octicon icon={PasteIcon} size={30} className={classes.SelectIcon}></Octicon>
               </ActionList.LeadingVisual>
@@ -38,7 +52,7 @@ const MenuCliente = (props) => {
               </ActionList.LeadingVisual>
               Cerrar Sesion
             </ActionList.Item>
-            <ActionList.Item className={classes.ActionListItems}>
+            <ActionList.Item onClick={iniciarSesion} className={classes.ActionListItems}>
               <ActionList.LeadingVisual>
                 <Octicon icon={SignInIcon} size={30} className={classes.SelectIcon}></Octicon>
               </ActionList.LeadingVisual>
