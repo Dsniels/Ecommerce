@@ -8,8 +8,8 @@ import { ThemeProvider as PrimerBrandThemeProvider } from '@primer/react-brand';
 import Inicio from './Pantallas/Inicio';
 import '@primer/react-brand/lib/css/main.css'
 import Tienda from './Pantallas/Tienda';
-import Detalles from './Pantallas/Detalles';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import Detalles from './Pantallas/Detalles';
 
 
 
