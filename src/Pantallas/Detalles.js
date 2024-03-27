@@ -1,6 +1,6 @@
 import { ArrowLeftIcon } from '@primer/octicons-react';
-import { Box, FormControl, Header, Heading, Label, PageLayout, Pagehead, Select } from '@primer/react';
-import {  Button, CTABanner, Image, Text, TextInput } from '@primer/react-brand';
+import { Box, FormControl,  Heading, Label, PageLayout } from '@primer/react';
+import {  Button,  Image, Text, TextInput } from '@primer/react-brand';
 import React from 'react';
 
 const Detalles = (props) => {

@@ -1,4 +1,4 @@
-import { NavList, Octicon, PageLayout, Timeline } from "@primer/react";
+import { Octicon, PageLayout, Timeline } from "@primer/react";
 import {
   Box,
   Button,
@@ -11,27 +11,11 @@ import {
 } from "@primer/react-brand";
 import React from "react";
 import useStyles from "../../Themes/useStyles";
-import {
-  Avatar,
-  Container,
-  Divider,
-  Grid,
-  TextField,
-  Typography,
-  Icon,
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  ThemeProvider,
-} from "@material-ui/core";
-import themme from "../../Themes/theme";
+
 import { GitCommitIcon } from "@primer/octicons-react";
 
 const Perfil = () => {
-  const classes = useStyles();
+
   return (
     <PageLayout columnGap="30px" rowGap="30px" >
       <PageLayout.Header >
