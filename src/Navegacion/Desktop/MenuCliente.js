@@ -2,8 +2,8 @@ import React from "react";
 import useStyles from "../../Themes/useStyles";
 import { ActionList, ActionMenu, Avatar, Octicon, } from "@primer/react";
 import { PasteIcon, PersonIcon, SignInIcon, SignOutIcon } from "@primer/octicons-react";
-import { Container} from "@material-ui/core";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { Box } from "@primer/react-brand";
 
 
 const MenuCliente = (props) => {
@@ -18,13 +18,16 @@ const MenuCliente = (props) => {
   const iniciarSesion = () => {
     history.push("/IniciarSesion");
   };
+  const registrarse = () => {
+    history.push("/Registro");
+  }
+
 
 
 
   return (
-    <Container className={classes.linkBarDesktop} style={{ display: 'flex', alignItems: 'center' }}>
 
-
+    <Box>
       {/* ActionMenu */}
       <ActionMenu renderAnchor={null} >
         <ActionMenu.Button style={{ fontSize: 16, color: 'white', paddingLeft: 10, textAlign: 'center', display: 'flex', backgroundColor: 'transparent' }} variant="invisible">
@@ -58,10 +61,16 @@ const MenuCliente = (props) => {
               </ActionList.LeadingVisual>
               Iniciar Sesion
             </ActionList.Item>
+            <ActionList.Item onSelect={registrarse} className={classes.ActionListItems}>
+              <ActionList.LeadingVisual>
+                <Octicon icon={SignInIcon} size={30} className={classes.SelectIcon}></Octicon>
+              </ActionList.LeadingVisual>
+              registrarse
+            </ActionList.Item>
           </ActionList>
         </ActionMenu.Overlay>
       </ActionMenu>
-    </Container>
+  </Box>  
   );
 };
 

@@ -11,10 +11,20 @@ import Tienda from './Pantallas/Tienda';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import Detalles from './Pantallas/Detalles';
 import Perfil from './Pantallas/Seguridad/Perfil';
-
+import { Grommet } from 'grommet';
+import Registro from './Pantallas/Seguridad/Registro';
 
 
 function App() {
+  const themeGrommet = {
+  global: {
+    font: {
+      family: "Roboto",
+      size: "18px",
+      height: "20px",
+    },
+  },
+};
 
   return (
     <PrimerThemeProvider colorMode='dark' theme={theme} >
@@ -29,6 +39,9 @@ function App() {
             <Route exact path="/Tienda" component={Tienda}/>  
             <Route exact path="/Detalles" component={Detalles}/> 
             <Route exact path="/Perfil" component={Perfil} />
+               <Route exact path="/Registro" component={Registro} />
+
+             
             <Redirect from="/" to="/Inicio" />     
           </Switch>
         </Router>
