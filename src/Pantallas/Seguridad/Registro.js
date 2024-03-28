@@ -1,6 +1,7 @@
 import {
   Box,
   FormControl,
+  Grid,
   Heading,
   Stack,
   TextInput,
@@ -8,6 +9,7 @@ import {
 import { Button, Grommet } from "grommet";
 import React from "react";
 import useStyles from "../../Themes/useStyles";
+import { Link } from "react-router-dom";
 
 export default function Registro() {
   const kindButtonTheme = {
@@ -70,8 +72,76 @@ export default function Registro() {
       },
     },
   };
+  const classes = useStyles();
   return (
-<Box  style={{width: 'auto', display: "flex", justifyContent: "center" }}  >
+<Box padding={{narrow:'spacious', wide:'spacious', regular:'normal'}} style={{height:'100%',width:'auto', display:'flex', justifyContent:'center'}}>
+    <form style={{borderRadius:20,backgroundColor:'#32383f', padding:20}}>
+        <Box>
+            <Heading style={{textAlign:'center',color:'#f6f8fa', paddingBottom:'50px', paddingTop:'40px'}}>Crea una Cuenta</Heading>
+        </Box>
+      <Grid  style={{paddingTop:50,borderRadius:30,padding:20,backgroundColor:'#24292e'}} fullWidth >
+
+            <Grid.Column  start={{xsmall:2,small:2, xlarge:2, large:2}} span={{small:2, xsmall:10, medium:2, large:2, xlarge:5 }}>
+              <FormControl ba fullWidth>
+                      <TextInput placeholder="Nombre" />
+              </FormControl>
+            </Grid.Column>
+            <Grid.Column start={{xsmall:2,small:2 }} span={{small:10, xsmall:10, medium:10, large:5, xlarge:5 }}>
+                  <FormControl fullWidth>
+                    <TextInput placeholder="Apellido" />
+                  </FormControl> 
+            </Grid.Column>
+            <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
+                <FormControl fullWidth  >
+                  <TextInput placeholder="Username" />
+                </FormControl>
+            </Grid.Column>
+            <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
+                <FormControl fullWidth  >
+                  <TextInput placeholder="Correo" />
+                </FormControl>
+            </Grid.Column>
+            <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
+                <FormControl fullWidth  >
+                  <TextInput placeholder="Contraseña" />
+                </FormControl>
+            </Grid.Column>
+            <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
+              <Grommet theme={kindButtonTheme}>
+              <Box
+                style={{
+                  justifyContent: "center",
+                  display: "grid",
+                  flexWrap: 'wrap',
+                  marginTop: 20,
+                }}
+              >
+                <Button
+                  style={{marginBottom:20 ,color: "#f6f8fa", ":active": { color: "white" } }}
+                  label="Registrarse"
+                  primary
+                />
+                <Link to="login" variant='body1' className={classes.link} >¿Ya tienes una Cuenta?</Link>
+              </Box>
+            </Grommet>
+
+            
+
+
+            </Grid.Column>
+            
+      </Grid>
+      
+    </form>
+    
+</Box>
+
+
+
+
+
+
+/* <Box  style={{width: 'auto', display: "flex", justifyContent: "center" }}  >
     <Box style={{  display: "flex", justifyContent: "center" }} >
       <Stack
       style={{ backgroundColor: "#24292e",borderRadius: "10px" }}
@@ -117,9 +187,7 @@ export default function Registro() {
 
 
               </Box>
-                <FormControl fullWidth  >
-                <TextInput placeholder="Username" />
-              </FormControl>
+
               <FormControl fullWidth>
                 <TextInput placeholder="correo" />
               </FormControl>
@@ -150,6 +218,6 @@ export default function Registro() {
         </Box>
       </Stack>
     </Box>
-</Box>
+</Box> */
   );
 }

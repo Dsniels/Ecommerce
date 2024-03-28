@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
         fontSize : "1.1rem",
         fontFamily : "Roboto",
         lineHeight: 1.5,
-        color : theme.palette.primary.main,
-        textDecoration : "none"
+        color : 'white',
+    
     },
     iconLogo:{
       padding :10  
