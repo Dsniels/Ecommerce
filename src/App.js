@@ -13,6 +13,7 @@ import Detalles from './Pantallas/Detalles';
 import Perfil from './Pantallas/Seguridad/Perfil';
 import { Grommet } from 'grommet';
 import Registro from './Pantallas/Seguridad/Registro';
+import Login from './Pantallas/Seguridad/Login';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
             <Route exact path="/Detalles" component={Detalles}/> 
             <Route exact path="/Perfil" component={Perfil} />
                <Route exact path="/Registro" component={Registro} />
+               <Route exact path="/Login" component={Login} />
 
              
             <Redirect from="/" to="/Inicio" />     

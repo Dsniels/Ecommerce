@@ -16,7 +16,7 @@ const MenuCliente = (props) => {
     history.push("/Pedidos");
   };
   const iniciarSesion = () => {
-    history.push("/IniciarSesion");
+    history.push("/Login");
   };
   const registrarse = () => {
     history.push("/Registro");
