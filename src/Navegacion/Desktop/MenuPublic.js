@@ -1,6 +1,6 @@
 import React from "react";
-import { Container } from "@material-ui/core";
-import { SubNav } from "@primer/react-brand";
+
+import { Box, SubNav } from "@primer/react-brand";
 
 
 const MenuPublic = () => {
@@ -8,7 +8,7 @@ const MenuPublic = () => {
 
     return(
         <>
-            <Container sx={{position: 'relative', height: 100}}>
+            <Box sx={{position: 'relative', height: 100}}>
                 <SubNav>
                     <SubNav.Heading style={{paddingRight:'20px'}} hr href="#">Features</SubNav.Heading>
                     <SubNav.Link href="#">Actions</SubNav.Link>
@@ -18,7 +18,7 @@ const MenuPublic = () => {
                     </SubNav.Link>
                     <SubNav.Link href="#">Code review</SubNav.Link>
                 </SubNav>
-            </Container>
+            </Box>
                    
         </>
     );

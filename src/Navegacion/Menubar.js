@@ -1,12 +1,14 @@
 import { Header, Octicon, Button, Overlay, Box} from "@primer/react";
 
 import {  ListUnorderedIcon, SquirrelIcon } from "@primer/octicons-react";
-import {  Container, Toolbar, Typography} from '@material-ui/core';
+
 import React, { useRef, useState } from 'react';
 import useStyles from '../Themes/useStyles';
 import { Link } from 'react-router-dom';
 import MenuCliente from "./Desktop/MenuCliente";
 import MenuMobile from "./Mobile/MenuMobile";
+import { Heading } from "@primer/react-brand";
+
 
 
 
@@ -27,8 +29,8 @@ const MenuBar = () => {
     return (
         <div>
             <Header sx={{color:'white', alignContent:'center'}} className={classes.Appbar} >
-                 <Container >
-                    <Toolbar>
+
+                        <Header.Item full>
                             <div ref={anchorRef} className={classes.sectionMobile}>
                                 <Button ref={buttonRef}
                                     size="small"
@@ -66,15 +68,21 @@ const MenuBar = () => {
                                     ) : null
                                     }
                             </div>  
-                                         
+
+                        </Header.Item>
+                        <Header.Item full>
                             <div className={classes.grow}>   
                                 
                                 <Link color="inherit" to='/Inicio' className={classes.LinkBarLogo} underline="none">
-                                       <Typography variant="h5">Shop</Typography>
+                                    <Heading as="h3"> Tienda</Heading>
                                 </Link>
 
 
-                            </div>
+                            </div>                        
+                        </Header.Item>
+                        <Header.Item full>
+
+
                             <div style={{border:'2px solid rgba(0, 0, 0, 0)'}} className={classes.sectionDesktop}>   
                                
                                 <Header.Item >
@@ -86,10 +94,14 @@ const MenuBar = () => {
 
 
                             </div>
+
+                        </Header.Item>
+                            
+                                         
+                            
                             
                        
-                    </Toolbar>
-                </Container>
+
             </Header>
 
 
