@@ -11,23 +11,6 @@ import {
 } from "@primer/react-brand";
 import React from "react";
 import useStyles from "../../Themes/useStyles";
-import {
-  Avatar,
-  Container,
-  Divider,
-  Grid,
-  TextField,
-  Typography,
-  Icon,
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  ThemeProvider,
-} from "@material-ui/core";
-import themme from "../../Themes/theme";
 import { GitCommitIcon } from "@primer/octicons-react";
 
 const Perfil = () => {
