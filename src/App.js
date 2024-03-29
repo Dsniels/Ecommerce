@@ -12,9 +12,12 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import Detalles from './Pantallas/Detalles';
 import Perfil from './Pantallas/Seguridad/Perfil';
 
+import Registro from './Pantallas/Seguridad/Registro';
+import Login from './Pantallas/Seguridad/Login';
 
 
 function App() {
+  
 
   return (
     <PrimerThemeProvider colorMode='dark' theme={theme} >
@@ -29,6 +32,10 @@ function App() {
             <Route exact path="/Tienda" component={Tienda}/>  
             <Route exact path="/Detalles" component={Detalles}/> 
             <Route exact path="/Perfil" component={Perfil} />
+               <Route exact path="/Registro" component={Registro} />
+               <Route exact path="/Login" component={Login} />
+
+             
             <Redirect from="/" to="/Inicio" />     
           </Switch>
         </Router>

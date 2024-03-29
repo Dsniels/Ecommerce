@@ -1,8 +1,9 @@
 import React from 'react'
 import useStyles from '../../Themes/useStyles'
-import { Avatar, ListItem, } from "@material-ui/core";
+
 import { NavList } from '@primer/react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { Avatar, ListItem } from '@material-ui/core';
 
 
 

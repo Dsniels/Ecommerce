@@ -28,7 +28,7 @@ const Detalles = (props) => {
         <PageLayout.Pane divider='line' resizable={true} >
           <Box style={{ justifyContent:'left', borderBlockColor:'whitesmoke'}}>
             <Heading  style={{fontSize:'20px', fontSmooth:'always', fontWeight:'bolder',paddingTop:30, paddingBottom:10, display: 'flex', color:'whitesmoke', justifyContent:'left'}} >Detalles </Heading>
-            <Text>detalleskdniorubeubvonsdmopajdioabs dbasjppksadknakabsjdbojncjkbajdas</Text>
+            <Text style={{overflowWrap:'break-word'}} weight='normal' size='100'>detalleskdniorubeubvonsdmdasdsdsdasdsdsadsdasdsaopajdioabs dbasjppksadknakabsjdbojncjkbajdas</Text>
             <Heading  style={{fontSize:'20px', fontSmooth:'always', fontWeight:'bolder',paddingTop:30, paddingBottom:10, display: 'flex', color:'whitesmoke', justifyContent:'left'}} >Precio: </Heading>
             <Text>$1200</Text>
             <FormControl sx={{paddingTop:30,paddingBottom:30, display: 'flex' ,justifyContent:'left'}}>

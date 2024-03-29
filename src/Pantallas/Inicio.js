@@ -1,7 +1,7 @@
 import React from 'react';
-import {Button, CTABanner, Heading, Image, River, Text} from '@primer/react-brand';
-import { Container } from '@material-ui/core';
+import {Button, CTABanner, Heading, Image, River, Stack, Text} from '@primer/react-brand';
 import useStyles from '../Themes/useStyles';
+import { Box } from '@primer/react';
 
 
 const Inicio = (props) => {
@@ -13,8 +13,11 @@ const Inicio = (props) => {
     }
   return (
     <>
-        <section style={{marginTop:100, padding:3}}>
-            <Container className={classes.containermt} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Stack style={{display:'flex', justifyContent:'center'}} direction="vertical" padding="spacious">
+
+
+        <section style={{marginTop:0, padding:3}}>
+            <Box className={classes.containermt} style={{width:'auto',display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <CTABanner   hasBorder>
                     <CTABanner.Heading>
                         Tienda en linea 
@@ -30,11 +33,11 @@ const Inicio = (props) => {
                         </Button>
                     </CTABanner.ButtonGroup>
                 </CTABanner>
-            </Container>            
+            </Box>            
         </section>
         
         
-        <Container style={{padding:50}}>
+        <Box style={{padding:50, display:'flex', justifyContent:'center'}}>
             <River imageTextRatio="60:40">
                 <River.Visual hasShadow={false}>
                     <Image  src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
@@ -49,8 +52,8 @@ const Inicio = (props) => {
                     </Text>
                 </River.Content>
             </River>
-        </Container>
-            
+        </Box>
+    </Stack>
 
     </>
   )
