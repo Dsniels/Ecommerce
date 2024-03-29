@@ -1,4 +1,4 @@
-import { NavList, Octicon, PageLayout, Timeline } from "@primer/react";
+import { Octicon, PageLayout, Timeline } from "@primer/react";
 import {
   Box,
   Button,
@@ -10,11 +10,10 @@ import {
   TextInput,
 } from "@primer/react-brand";
 import React from "react";
-import useStyles from "../../Themes/useStyles";
 import { GitCommitIcon } from "@primer/octicons-react";
 
 const Perfil = () => {
-  const classes = useStyles();
+
   return (
     <PageLayout sx={{height:'1080px'}} columnGap="30px" rowGap="30px" >
       <PageLayout.Header >
