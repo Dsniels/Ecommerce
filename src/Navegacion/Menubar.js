@@ -1,7 +1,7 @@
 import { Header, Octicon, Button, Overlay, Box} from "@primer/react";
 
 
-import {  ListUnorderedIcon, SquirrelIcon } from "@primer/octicons-react";
+import {  ListUnorderedIcon} from "@primer/octicons-react";
 
 
 import React, { useRef, useState } from 'react';
