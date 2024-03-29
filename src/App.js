@@ -14,6 +14,7 @@ import Perfil from './Pantallas/Seguridad/Perfil';
 
 import Registro from './Pantallas/Seguridad/Registro';
 import Login from './Pantallas/Seguridad/Login';
+import CarritoCompras from './Pantallas/CarritoCompras';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route exact path="/Perfil" component={Perfil} />
                <Route exact path="/Registro" component={Registro} />
                <Route exact path="/Login" component={Login} />
+               <Route exact path="/Carrito" component={CarritoCompras} />
 
              
             <Redirect from="/" to="/Inicio" />     

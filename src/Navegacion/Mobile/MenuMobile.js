@@ -9,10 +9,6 @@ import { Avatar, ListItem } from '@material-ui/core';
 
 export default function MenuMobile(props) {
 
-/*     const[openCliente, setOpenCliente] = useState(false);
-    const handleClickCliente = () => {
-        setOpenCliente((prevOpen) => !prevOpen);
-    } */
     const history = useHistory();
     const classes = useStyles();
     const perfil = () => {
