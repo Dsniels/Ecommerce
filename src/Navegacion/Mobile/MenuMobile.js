@@ -22,7 +22,7 @@ export default function MenuMobile(props) {
         history.push("/Pedidos");
     };
     const iniciarSesion = () => {
-        history.push("/IniciarSesion");
+        history.push("/login");
     };
     const tienda = () => {
         history.push("/Tienda");
