@@ -11,21 +11,13 @@ import Tienda from './Pantallas/Tienda';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import Detalles from './Pantallas/Detalles';
 import Perfil from './Pantallas/Seguridad/Perfil';
-import { Grommet } from 'grommet';
+
 import Registro from './Pantallas/Seguridad/Registro';
 import Login from './Pantallas/Seguridad/Login';
 
 
 function App() {
-  const themeGrommet = {
-  global: {
-    font: {
-      family: "Roboto",
-      size: "18px",
-      height: "20px",
-    },
-  },
-};
+  
 
   return (
     <PrimerThemeProvider colorMode='dark' theme={theme} >
