@@ -1,13 +1,16 @@
-import { ButtonGroup, Heading, PageLayout } from '@primer/react'
-import { Box, Button, Grid, Stack, Text } from '@primer/react-brand'
-import React from 'react'
+import { FeedPlusIcon, NoEntryIcon, TrashIcon } from '@primer/octicons-react'
+import { ButtonGroup, Heading, IconButton, Octicon, PageLayout } from '@primer/react'
+import { Box, Button, Grid, Image, Stack, Text } from '@primer/react-brand'
+import React from 'react';
+import { ThemeProvider } from '@material-ui/core';
+import { theme } from '../Themes/theme';
 
 export default function CarritoCompras() {
   return (
     <PageLayout sx={{padding:60,color:'white',  backgroundColor:'#32383f'}} containerWidth='large'>
 
         <PageLayout.Content width='large' padding='condensed' sx={{borderRadius:20,backgroundColor:'#24292e'}} >
-            <Grid enableOverlay fullWidth >
+            <Grid  fullWidth >
 
                 <Grid.Column start={2} span={{small:11, xsmall:12, large:2, xlarge:10,xxlarge:10}}>
                     <Box >
@@ -15,13 +18,23 @@ export default function CarritoCompras() {
                     </Box>
 
                 </Grid.Column>
-                <Grid.Column start={2} span={{small:2, xsmall:2, large:2, xlarge:5}}>
-
+                <Grid.Column style={{ padding:10,backgroundColor:'#424a53', borderRadius:'10px',display:'flex', justifyContent:'space-between', alignItems:'center'}} start={2} span={{small:12, xsmall:12, large:15, xlarge:15}}>
+                    <Box>
+                        <Image src='https://avatars.githubusercontent.com/u/92997159?v=4' width={40} height={40} />
+                    </Box>
+                    <Box>
+                        Tenis Nike
+                    </Box>
+                    <Box>
+                        $132
+                    </Box>
+                    <Box>
+                        <Box style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                            <IconButton variant='invisible' icon={NoEntryIcon}/> 1 <IconButton variant='invisible' icon={FeedPlusIcon}/>
+                        </Box>
+                    </Box>
+                    <IconButton variant='invisible' icon={TrashIcon} />
                 </Grid.Column>
-                <Grid.Column start={2} span={{small:2, xsmall:2, large:2, xlarge:5}}>
-
-                </Grid.Column>
-
 
 
             </Grid>
@@ -29,7 +42,7 @@ export default function CarritoCompras() {
         </PageLayout.Content>
         <PageLayout.Pane divider='line' sx={{borderRadius:20,marginTop:20, backgroundColor:'#24292e'}} position={{narrow:'start',regular:'end', wide:'end'}} width='large' >
             
-                <Grid  enableOverlay fullWidth >
+                <Grid  fullWidth >
                     <Grid.Column style={{ justifyContent:'center', display:'flex',margin:25}} start={2} span={5} >
                           <Heading>Resumen</Heading>
                     </Grid.Column>
