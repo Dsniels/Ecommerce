@@ -11,13 +11,25 @@ import Tienda from './Pantallas/Tienda';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import Detalles from './Pantallas/Detalles';
 import Perfil from './Pantallas/Seguridad/Perfil';
-
+import { ThemeProvider as ProviderMUI, createTheme } from '@material-ui/core';
 import Registro from './Pantallas/Seguridad/Registro';
 import Login from './Pantallas/Seguridad/Login';
 import CarritoCompras from './Pantallas/CarritoCompras';
-
+import ProcesoCompra from './Pantallas/ProcesoCompra';
 
 function App() {
+  const themeMui = createTheme({
+    palette: {
+        primary : {
+            main : '#0f80aa'
+        }
+    }
+})
+
+
+
+
+
   
 
   return (
@@ -36,6 +48,9 @@ function App() {
                <Route exact path="/Registro" component={Registro} />
                <Route exact path="/Login" component={Login} />
                <Route exact path="/Carrito" component={CarritoCompras} />
+
+                  <Route exact path="/ProcesoCompra" component={ProcesoCompra} />
+
 
              
             <Redirect from="/" to="/Inicio" />     
