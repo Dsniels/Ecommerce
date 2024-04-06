@@ -15,7 +15,7 @@ export default function MenuMobile(props) {
         history.push("/Perfil");
     };
     const pedidos = () => {
-        history.push("/Pedidos");
+        history.push("/Carrito");
     };
     const iniciarSesion = () => {
         history.push("/login");
