@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     containermt: {
+        color:'white',
         marginTop: 100
     },
     card:{
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
     form:{
         marginTop: 40,
+        color:'white',
         marginBottom: 10
     },
     gridmb:{
@@ -140,7 +142,7 @@ const useStyles = makeStyles((theme) => ({
     },
     text_title : {
         fontWeight: 600,
-        color: '#494949',
+        color: 'white',
         marginBottom: 10
     },
     media:{
@@ -181,7 +183,8 @@ const useStyles = makeStyles((theme) => ({
     },
     gridPC : {
         margin: "auto",
-        marginTop: 20
+        marginTop: 20,
+        color:'white'
     },
     ButtonAnterior :{
         marginRight: 8,
