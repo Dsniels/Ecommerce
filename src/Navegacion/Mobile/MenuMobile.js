@@ -9,20 +9,16 @@ import { Avatar, ListItem } from '@material-ui/core';
 
 export default function MenuMobile(props) {
 
-/*     const[openCliente, setOpenCliente] = useState(false);
-    const handleClickCliente = () => {
-        setOpenCliente((prevOpen) => !prevOpen);
-    } */
     const history = useHistory();
     const classes = useStyles();
     const perfil = () => {
         history.push("/Perfil");
     };
     const pedidos = () => {
-        history.push("/Pedidos");
+        history.push("/Carrito");
     };
     const iniciarSesion = () => {
-        history.push("/IniciarSesion");
+        history.push("/login");
     };
     const tienda = () => {
         history.push("/Tienda");

@@ -68,7 +68,7 @@ export default function Login() {
     const classes = useStyles();
   return (
 <Box padding={{narrow:'spacious', wide:'spacious', regular:'normal'}} style={{height:'100%',width:'auto', display:'flex', justifyContent:'center'}}>
-    <form style={{borderRadius:20,backgroundColor:'#32383f', padding:20}}>
+    <form style={{borderRadius:20,backgroundColor:'#1f2328', padding:20}}>
         <Box>
             <Heading style={{textAlign:'center',color:'#f6f8fa', paddingBottom:'30px', paddingTop:'40px'}}>Iniciar Sesion</Heading>
         </Box>
@@ -76,12 +76,12 @@ export default function Login() {
 
             <Grid.Column style={{paddingTop:30}} start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
                 <FormControl fullWidth  >
-                  <TextInput placeholder="Correo" />
+                  <TextInput invisible placeholder="Correo" />
                 </FormControl>
             </Grid.Column>
             <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
                 <FormControl fullWidth  >
-                  <TextInput placeholder="Contraseña" />
+                  <TextInput invisible placeholder="Contraseña" />
                 </FormControl>
             </Grid.Column>
             <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
