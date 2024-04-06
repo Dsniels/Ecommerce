@@ -1,13 +1,18 @@
 import { FeedPlusIcon, NoEntryIcon, TrashIcon } from '@primer/octicons-react'
-import { ButtonGroup, Heading, IconButton, Octicon, PageLayout } from '@primer/react'
-import { Box, Button, Grid, Image, Stack, Text } from '@primer/react-brand'
+import { Heading, IconButton,PageLayout } from '@primer/react'
+import { Box, Button, Grid, Image,Text } from '@primer/react-brand'
 import React from 'react';
-import { ThemeProvider } from '@material-ui/core';
-import { theme } from '../Themes/theme';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 export default function CarritoCompras() {
+    const history = useHistory();
+    const ProcesoCompra = () => {
+        history.push('/ProcesoCompra');
+    }
+
+
   return (
-    <PageLayout sx={{padding:60,color:'white',  backgroundColor:'#32383f'}} containerWidth='large'>
+    <PageLayout sx={{padding:20,color:'white',  backgroundColor:'#32383f'}} containerWidth='large'>
 
         <PageLayout.Content width='large' padding='condensed' sx={{borderRadius:20,backgroundColor:'#24292e'}} >
             <Grid  fullWidth >
@@ -22,7 +27,7 @@ export default function CarritoCompras() {
                     <Box>
                         <Image src='https://avatars.githubusercontent.com/u/92997159?v=4' width={40} height={40} />
                     </Box>
-                    <Box>
+                    <Box >
                         Tenis Nike
                     </Box>
                     <Box>
@@ -65,7 +70,7 @@ export default function CarritoCompras() {
                         <Text font='hubot-sans' weight='bold'> $145</Text>
                     </Grid.Column>
                     <Grid.Column style={{margin:15,display:'flex', justifyContent:'center'}} start={{xlarge:1, xxlarge:1, large:1,small:2, xsmall:2}} span={{small:10, xsmall:10, xxlarge:7, large:7, xlarge:7}}>
-                        <Button block size='medium' variant='primary'>Comprar</Button>
+                        <Button block size='medium'  variant='primary' onClick={ProcesoCompra}>Comprar</Button>
                     </Grid.Column>
                 </Grid>
         </PageLayout.Pane>
