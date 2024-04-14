@@ -51,12 +51,13 @@ const Detalles = (props) => {
       </PageLayout.Header>
 
         <PageLayout.Content  sx={{width:'80px', height:'auto'}}>
-          <Label style={{margin:10}} size='large' variant='sponsors'>{productoSeleccionado.nombre}</Label>
+          <Label style={{margin:10}} size='large' variant='sponsors'>{productoSeleccionado.marcaNombre}</Label>
           <Image style={{ borderRadius:'10px' ,position:'relative',width:'100%', height:'auto'}} src={productoSeleccionado.imagen ? productoSeleccionado.imagen : "https://via.placeholder.com/600x400/d3d9df/d3d9df.png"}/>
 
         </PageLayout.Content>
-        <PageLayout.Pane divider='line' resizable={true} >
+        <PageLayout.Pane width='large' divider='line' resizable={false} >
           <Box style={{ justifyContent:'left', borderBlockColor:'whitesmoke'}}>
+            <Heading  style={{fontSize:'60px', fontSmooth:'always', fontWeight:'bolder',paddingTop:30, paddingBottom:10, display: 'flex', color:'whitesmoke', justifyContent:'left'}} >{productoSeleccionado.nombre} </Heading>
             <Heading  style={{fontSize:'20px', fontSmooth:'always', fontWeight:'bolder',paddingTop:30, paddingBottom:10, display: 'flex', color:'whitesmoke', justifyContent:'left'}} >Detalles </Heading>
             <Text style={{overflowWrap:'break-word'}} weight='normal' size='100'>{productoSeleccionado.descripcion}</Text>
             <Heading  style={{fontSize:'20px', fontSmooth:'always', fontWeight:'bolder',paddingTop:30, paddingBottom:10, display: 'flex', color:'whitesmoke', justifyContent:'left'}} >Precio: </Heading>
