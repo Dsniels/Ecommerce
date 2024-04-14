@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Heading, Stack, ThemeProvider } from "@primer/react-brand";
+import { Box, Card,  Heading, ThemeProvider } from "@primer/react-brand";
 import React, { useEffect, useState } from "react";
 import { Pagination } from "@primer/react";
 import { getProductos } from "../Actions/ProductoAction";
