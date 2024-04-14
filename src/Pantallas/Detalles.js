@@ -1,7 +1,7 @@
 import { ArrowLeftIcon } from '@primer/octicons-react';
 import { Box, FormControl,  Heading, Label, PageLayout } from '@primer/react';
 import {  Button,  Image, Text, TextInput } from '@primer/react-brand';
-import React, { useDebugValue, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getProducto } from '../Actions/ProductoAction';
 
 const Detalles = (props) => {
@@ -32,7 +32,18 @@ const Detalles = (props) => {
 
   }, [setProductoSeleccionado] );
 
-
+  const agregarCarrito = async () =>{
+    const item = {
+      id: productoSeleccionado.id,
+      producto: productoSeleccionado.nombre,
+      precio: productoSeleccionado.precio,
+      cantidad: cantidad,
+      imagen: productoSeleccionado.imagen,
+      marca: productoSeleccionado.marcaNombre,
+      categoria: productoSeleccionado.categoria
+    }
+    
+  }
 
 
   const regresar = () => {
