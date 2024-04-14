@@ -1,4 +1,4 @@
-import { Box, Card, Heading, Stack, ThemeProvider } from "@primer/react-brand";
+import { Box, Card, Grid, Heading, Stack, ThemeProvider } from "@primer/react-brand";
 import React, { useEffect, useState } from "react";
 import { Pagination } from "@primer/react";
 import { getProductos } from "../Actions/ProductoAction";
@@ -7,18 +7,20 @@ export default function Tienda(props) {
 
   const [requestProductos, setRequestProductos] = useState({
     pageIndex: 1,
-    pageSize: 10,
+    pageSize: 5,
     search: "",
   });
   
   const [paginador, setPaginador] = useState({
-    count : 0,
-    pageIndex: 0,
-    pageSize: 0,
+    count : 1,
+    pageIndex: 1,
+    pageSize: 1,
+    pageCount:10,
     data : []
   })
 
   const handleChange = (e, value) =>{
+    e.preventDefault()
     setRequestProductos( (prev)=> ({
       ...prev,
       pageIndex: value
@@ -53,33 +55,29 @@ export default function Tienda(props) {
         >
           Productos
         </Heading>
+        <Box style={{display:'flex', alignItems: 'center', justifyContent:'center'}}>
+
+      
         <Box
           style={{
-            alignItems: "center",
-            display: "flex",
-            justifyContent: "center",
+            gap:50,            
+            display: 'grid',
+            width:'1800px',
+            gridTemplateColumns : 'repeat(auto-fill, minmax(15rem, 1fr))',
+            justifyContent: 'center',
+            padding:70
           }}
-          padding="spacious"
+          
           backgroundColor="default"
         >
+
         {paginador.data.map(data =>( 
-          <Stack
-            direction={{
-              narrow: "vertical",
-              regular: "vertical",
-              wide: "horizontal",
-            }}
-            key={data.key}
-            padding="none"
-          >
             <Card
               ctaText="Detalles"
               onClick={() => detalles(data)}
               style={{
                 width: "300px",
                 height: "400px",
-                display: "flex",
-                flexDirection: "column",
               }}
             >
               {" "}
@@ -94,18 +92,17 @@ export default function Tienda(props) {
                 ${data.precio}
               </Card.Description>
             </Card>
-          </Stack>
         ))}
           
         </Box>
-       
+      </Box>
       </ThemeProvider>
-{/*       <Pagination
-        pageCount={paginador.count}
+       <Pagination
+        pageCount={3}
         currentPage={paginador.pageIndex}
         marginPageCount={1}
         onPageChange={handleChange}
-      /> */}
+      /> 
     </>
   );
 }
