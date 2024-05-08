@@ -25,6 +25,7 @@ function App() {
     },
   });
 
+
   return (
     <PrimerThemeProvider colorMode="dark" theme={theme}>
       <PrimerBrandThemeProvider
@@ -40,6 +41,7 @@ function App() {
             <Route exact path="/Tienda" component={Tienda} />
             <Route exact path="/Detalles/:id" component={Detalles} />
             <Route exact path="/Perfil" component={Perfil} />
+
             <Route exact path="/Registro" component={Registro} />
             <Route exact path="/Login" component={Login} />
             <Route exact path="/Carrito" component={CarritoCompras} />
@@ -47,6 +49,7 @@ function App() {
             <Route exact path="/ProcesoCompra" component={ProcesoCompra} />
 
             <Redirect from="/" to="/Inicio" />
+
           </Switch>
         </Router>
       </PrimerBrandThemeProvider>
