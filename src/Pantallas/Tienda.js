@@ -1,10 +1,43 @@
-import { Box, Card, Heading, Stack, ThemeProvider } from "@primer/react-brand";
-import React from "react";
+import { Box, Card, Heading, ThemeProvider } from "@primer/react-brand";
+import React, { useEffect, useState } from "react";
 import { Pagination } from "@primer/react";
+import { getProductos } from "../Actions/ProductoAction";
 
 export default function Tienda(props) {
-  const detalles = () => {
-    props.history.push("/Detalles");
+  const [requestProductos, setRequestProductos] = useState({
+    pageIndex: 1,
+    pageSize: 5,
+    search: "",
+  });
+
+  const [paginador, setPaginador] = useState({
+    count: 1,
+    pageIndex: 1,
+    pageSize: 1,
+    pageCount: 10,
+    data: [],
+  });
+
+  const handleChange = (e, value) => {
+    e.preventDefault();
+    setRequestProductos((prev) => ({
+      ...prev,
+      pageIndex: value,
+    }));
+  };
+
+  useEffect(() => {
+    const getListaProductos = async () => {
+      const response = await getProductos(requestProductos);
+      console.log(response);
+      setPaginador(response.data);
+    };
+
+    getListaProductos();
+  }, [requestProductos]);
+
+  const detalles = async (item) => {
+    props.history.push("/Detalles/" + item.id);
   };
   return (
     <>
@@ -19,217 +52,56 @@ export default function Tienda(props) {
         </Heading>
         <Box
           style={{
-            alignItems: "center",
             display: "flex",
+            alignItems: "center",
             justifyContent: "center",
           }}
-          padding="spacious"
-          backgroundColor="default"
         >
-          <Stack
-            direction={{
-              narrow: "vertical",
-              regular: "vertical",
-              wide: "horizontal",
+          <Box
+            style={{
+              gap: 50,
+              display: "grid",
+              width: "1800px",
+              gridTemplateColumns: "repeat(auto-fill, minmax(15rem, 1fr))",
+              justifyContent: "center",
+              padding: 70,
             }}
-            padding="none"
+            backgroundColor="default"
           >
-            <Card
-              ctaText="Detalles"
-              onClick={detalles}
-              style={{
-                width: "300px",
-                height: "400px",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              {" "}
-              {/* Ajusta el ancho y alto aquí */}
-              <Card.Image
-                src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
-                alt="placeholder, blank area with an gray background color"
-                aspectRatio="16:9"
-              />
-              <Card.Heading>Playera</Card.Heading>
-              <Card.Description style={{ flex: "1", overflow: "hidden" }}>
-                $120
-              </Card.Description>
-            </Card>
-            <Card
-              ctaText="Detalles"
-              onClick={detalles}
-              style={{
-                width: "300px", // Ajusta el ancho aquí
-                height: "400px", // Ajusta el alto aquí
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <Card.Image
-                src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
-                alt="placeholder, blank area with an gray background color"
-                aspectRatio="16:9"
-              />
-              <Card.Heading>Tenis</Card.Heading>
-              <Card.Description style={{ flex: "1", overflow: "hidden" }}>
-                $4200
-              </Card.Description>
-            </Card>
-            <Card
-              ctaText="Detalles"
-              onClick={detalles}
-              style={{
-                width: "300px",
-                height: "400px",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              {" "}
-              {/* Ajusta el ancho y alto aquí */}
-              <Card.Image
-                src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
-                alt="placeholder, blank area with an gray background color"
-                aspectRatio="16:9"
-              />
-              <Card.Heading>Short</Card.Heading>
-              <Card.Description style={{ flex: "1", overflow: "hidden" }}>
-                $500
-              </Card.Description>
-            </Card>
-            <Card
-              ctaText="Detalles"
-              onClick={detalles}
-              style={{
-                width: "300px", // Ajusta el ancho aquí
-                height: "400px", // Ajusta el alto aquí
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <Card.Image
-                src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
-                alt="placeholder, blank area with an gray background color"
-                aspectRatio="16:9"
-              />
-              <Card.Heading>Balon </Card.Heading>
-              <Card.Description style={{ flex: "1", overflow: "hidden" }}>
-                $400
-              </Card.Description>
-            </Card>
-          </Stack>
-        </Box>
-        <Box
-          style={{
-            alignItems: "center",
-            display: "flex",
-            justifyContent: "center",
-          }}
-          paddingTop="2px"
-          backgroundColor="default"
-        >
-          <Stack
-            direction={{
-              narrow: "vertical",
-              regular: "vertical",
-              wide: "horizontal",
-            }}
-            padding="none"
-          >
-            <Card
-              ctaText="Detalles"
-              onClick={detalles}
-              style={{
-                width: "300px",
-                height: "400px",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              {" "}
-              {/* Ajusta el ancho y alto aquí */}
-              <Card.Image
-                src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
-                alt="placeholder, blank area with an gray background color"
-                aspectRatio="16:9"
-              />
-              <Card.Heading>Playera</Card.Heading>
-              <Card.Description style={{ flex: "1", overflow: "hidden" }}>
-                $120
-              </Card.Description>
-            </Card>
-            <Card
-              ctaText="Detalles"
-              onClick={detalles}
-              style={{
-                width: "300px", // Ajusta el ancho aquí
-                height: "400px", // Ajusta el alto aquí
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <Card.Image
-                src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
-                alt="placeholder, blank area with an gray background color"
-                aspectRatio="16:9"
-              />
-              <Card.Heading>Tenis</Card.Heading>
-              <Card.Description style={{ flex: "1", overflow: "hidden" }}>
-                $4200
-              </Card.Description>
-            </Card>
-            <Card
-              ctaText="Detalles"
-              onClick={detalles}
-              style={{
-                width: "300px",
-                height: "400px",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              {" "}
-              {/* Ajusta el ancho y alto aquí */}
-              <Card.Image
-                src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
-                alt="placeholder, blank area with an gray background color"
-                aspectRatio="16:9"
-              />
-              <Card.Heading>Short</Card.Heading>
-              <Card.Description style={{ flex: "1", overflow: "hidden" }}>
-                $500
-              </Card.Description>
-            </Card>
-            <Card
-              ctaText="Detalles"
-              onClick={detalles}
-              style={{
-                width: "300px", // Ajusta el ancho aquí
-                height: "400px", // Ajusta el alto aquí
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <Card.Image
-                src="https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
-                alt="placeholder, blank area with an gray background color"
-                aspectRatio="16:9"
-              />
-              <Card.Heading>Balon </Card.Heading>
-              <Card.Description style={{ flex: "1", overflow: "hidden" }}>
-                $400
-              </Card.Description>
-            </Card>
-          </Stack>
+            {paginador.data.map((data) => (
+              <Card
+                ctaText="Detalles"
+                onClick={() => detalles(data)}
+                style={{
+                  width: "300px",
+                  height: "400px",
+                }}
+              >
+                {" "}
+                {/* Ajusta el ancho y alto aquí */}
+                <Card.Image
+                  src={
+                    data.imagen
+                      ? data.imagen
+                      : "https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
+                  }
+                  alt="placeholder, blank area with an gray background color"
+                  aspectRatio="16:9"
+                />
+                <Card.Heading>{data.nombre}</Card.Heading>
+                <Card.Description style={{ flex: "1", overflow: "hidden" }}>
+                  ${data.precio}
+                </Card.Description>
+              </Card>
+            ))}
+          </Box>
         </Box>
       </ThemeProvider>
       <Pagination
         pageCount={3}
-        currentPage={1}
+        currentPage={paginador.pageIndex}
         marginPageCount={1}
-        surroundingPageCount={2}
-        onPageChange={(e) => e.preventDefault()}
+        onPageChange={handleChange}
       />
     </>
   );
