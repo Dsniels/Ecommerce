@@ -5,9 +5,10 @@ export const getProductos = (request) => {
   return new Promise((resolve, reject) => {
     httpCliente
       .get(
-        `/api/Producto?pageIndex=${request.pageIndex}&pageSize=${request.pageSize}&search=${request.search}`,
+        `/api/productos?page=${request.pageIndex}&pageSize=${request.pageSize}`,
       )
       .then((response) => {
+        console.log("response:", response);
         resolve(response);
       });
   });
@@ -16,7 +17,7 @@ export const getProductos = (request) => {
 export const getProducto = (id) => {
   return new Promise((resolve, reject) => {
     httpCliente
-      .get(`/api/Producto/${id}`)
+      .get(`/api/productos/${id}`)
       .then((response) => {
         resolve(response);
       })

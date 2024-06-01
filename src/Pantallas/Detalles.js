@@ -9,11 +9,11 @@ const Detalles = (props) => {
 
   const [productoSeleccionado, setProductoSeleccionado] = useState({
     id: 0,
-    nombre: "",
+    name: "",
     descripcion: "",
     stock: 0,
     marcaId: 0,
-    marcaNombre: "",
+    marca: "",
     precio: 0.0,
     imagen: "",
     categoria: "",
@@ -28,12 +28,12 @@ const Detalles = (props) => {
     };
 
     getProductoAsync();
-  }, [setProductoSeleccionado]);
+  }, [setProductoSeleccionado, props.match.params.id]);
 
   const agregarCarrito = async () => {
     const item = {
-      id: productoSeleccionado.id,
-      producto: productoSeleccionado.nombre,
+      id: productoSeleccionado._id,
+      producto: productoSeleccionado.name,
       precio: productoSeleccionado.precio,
       cantidad: cantidad,
       imagen: productoSeleccionado.imagen,
@@ -71,7 +71,7 @@ const Detalles = (props) => {
 
         <PageLayout.Content sx={{ width: "80px", height: "auto" }}>
           <Label style={{ margin: 10 }} size="large" variant="sponsors">
-            {productoSeleccionado.marcaNombre}
+            {productoSeleccionado.marca}
           </Label>
           <Image
             style={{
@@ -87,6 +87,7 @@ const Detalles = (props) => {
             }
           />
         </PageLayout.Content>
+
         <PageLayout.Pane width="large" divider="line" resizable={false}>
           <Box
             style={{ justifyContent: "left", borderBlockColor: "whitesmoke" }}
@@ -103,7 +104,7 @@ const Detalles = (props) => {
                 justifyContent: "left",
               }}
             >
-              {productoSeleccionado.nombre}{" "}
+              {productoSeleccionado.name}{" "}
             </Heading>
             <Heading
               style={{
@@ -140,6 +141,7 @@ const Detalles = (props) => {
             >
               Precio:{" "}
             </Heading>
+
             <Text>${productoSeleccionado.precio}</Text>
             <FormControl
               sx={{

@@ -5,9 +5,8 @@ import { getProductos } from "../Actions/ProductoAction";
 
 export default function Tienda(props) {
   const [requestProductos, setRequestProductos] = useState({
-    pageIndex: 1,
-    pageSize: 5,
-    search: "",
+    page: 1,
+    pageSize: 6,
   });
 
   const [paginador, setPaginador] = useState({
@@ -29,15 +28,16 @@ export default function Tienda(props) {
   useEffect(() => {
     const getListaProductos = async () => {
       const response = await getProductos(requestProductos);
-      console.log(response);
-      setPaginador(response.data);
+      console.log(response.data);
+      console.log(paginador);
+      setPaginador((prev) => ({ ...prev, data: response.data }));
     };
 
     getListaProductos();
-  }, [requestProductos]);
+  }, [requestProductos, paginador]);
 
   const detalles = async (item) => {
-    props.history.push("/Detalles/" + item.id);
+    props.history.push("/Detalles/" + item._id);
   };
   return (
     <>
@@ -57,44 +57,32 @@ export default function Tienda(props) {
             justifyContent: "center",
           }}
         >
-          <Box
-            style={{
-              gap: 50,
-              display: "grid",
-              width: "1800px",
-              gridTemplateColumns: "repeat(auto-fill, minmax(15rem, 1fr))",
-              justifyContent: "center",
-              padding: 70,
-            }}
-            backgroundColor="default"
-          >
-            {paginador.data.map((data) => (
-              <Card
-                ctaText="Detalles"
-                onClick={() => detalles(data)}
-                style={{
-                  width: "300px",
-                  height: "400px",
-                }}
-              >
-                {" "}
-                {/* Ajusta el ancho y alto aquí */}
-                <Card.Image
-                  src={
-                    data.imagen
-                      ? data.imagen
-                      : "https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
-                  }
-                  alt="placeholder, blank area with an gray background color"
-                  aspectRatio="16:9"
-                />
-                <Card.Heading>{data.nombre}</Card.Heading>
-                <Card.Description style={{ flex: "1", overflow: "hidden" }}>
-                  ${data.precio}
-                </Card.Description>
-              </Card>
-            ))}
-          </Box>
+          {paginador.data.map((data) => (
+            <Card
+              ctaText="Detalles"
+              onClick={() => detalles(data)}
+              style={{
+                width: "300px",
+                height: "400px",
+              }}
+            >
+              {" "}
+              {/* Ajusta el ancho y alto aquí */}
+              <Card.Image
+                src={
+                  data.imagen
+                    ? data.imagen
+                    : "https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
+                }
+                alt="placeholder, blank area with an gray background color"
+                aspectRatio="16:9"
+              />
+              <Card.Heading>{data.name}</Card.Heading>
+              <Card.Description style={{ flex: "1", overflow: "hidden" }}>
+                ${data.precio}
+              </Card.Description>
+            </Card>
+          ))}
         </Box>
       </ThemeProvider>
       <Pagination
