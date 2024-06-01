@@ -34,7 +34,7 @@ export default function Tienda(props) {
     }
 
     getListaProductos();
-  }, [requestProductos]);
+  }, [requestProductos, paginador]);
 
   const detalles = async (item) => {
     props.history.push("/Detalles/" + item._id);

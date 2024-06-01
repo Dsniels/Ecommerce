@@ -30,7 +30,7 @@ const Detalles = (props) => {
     };
 
     getProductoAsync();
-  }, [setProductoSeleccionado, props.params.match.id]);
+  }, [setProductoSeleccionado, props.match.params.id]);
 
   const agregarCarrito = async () =>{
 
