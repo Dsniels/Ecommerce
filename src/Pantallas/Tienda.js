@@ -6,9 +6,8 @@ import { getProductos } from "../Actions/ProductoAction";
 export default function Tienda(props) {
 
   const [requestProductos, setRequestProductos] = useState({
-    pageIndex: 1,
-    pageSize: 5,
-    search: "",
+    page: 1,
+    pageSize: 6,
   });
   
   const [paginador, setPaginador] = useState({
@@ -31,8 +30,9 @@ export default function Tienda(props) {
   useEffect( ()=>{
     const getListaProductos = async () => {
       const response = await getProductos(requestProductos);
-      console.log(response);
-      setPaginador(response.data)
+      console.log(response.data);
+      console.log(paginador)
+      setPaginador(prev => ({...prev, data : response.data}))
     }
 
     getListaProductos();
@@ -42,7 +42,7 @@ export default function Tienda(props) {
   
 
   const detalles = async (item) => {
-    props.history.push("/Detalles/" + item.id);
+    props.history.push("/Detalles/" + item._id);
   };
   return (
     <>
@@ -87,7 +87,7 @@ export default function Tienda(props) {
                 alt="placeholder, blank area with an gray background color"
                 aspectRatio="16:9"
               />
-              <Card.Heading>{data.nombre}</Card.Heading>
+              <Card.Heading>{data.name}</Card.Heading>
               <Card.Description style={{ flex: "1", overflow: "hidden" }}>
                 ${data.precio}
               </Card.Description>
