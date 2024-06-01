@@ -11,18 +11,16 @@ const Detalles = (props) => {
   const [{sesionCarrito}, dispatch] = useStateValue()
 
   const [productoSeleccionado, setProductoSeleccionado] = useState({
-
-    id : 0,
-    name:'',
-    descripcion :'',
-    stock:0,
-    marcaId:0,
-    marca:'',
-    precio:0.0,
-    imagen:'',
-    categoria:'',
-    categoriaId:0
-
+    id: 0,
+    name: "",
+    descripcion: "",
+    stock: 0,
+    marcaId: 0,
+    marca: "",
+    precio: 0.0,
+    imagen: "",
+    categoria: "",
+    categoriaId: 0,
   });
 
   useEffect(() => {
@@ -35,8 +33,7 @@ const Detalles = (props) => {
     getProductoAsync();
   }, [setProductoSeleccionado, props.match.params.id]);
 
-  const agregarCarrito = async () =>{
-
+  const agregarCarrito = async () => {
     const item = {
       id: productoSeleccionado._id,
       name: productoSeleccionado.name,
@@ -59,7 +56,6 @@ const Detalles = (props) => {
 
   return (
     <>
-
       <PageLayout sx={{ padding: 50 }}>
         <PageLayout.Header sx={{ display: "flex", justifyItems: "center" }}>
           <Heading
@@ -80,7 +76,6 @@ const Detalles = (props) => {
             Regresar
           </Button>
         </PageLayout.Header>
-
 
         <PageLayout.Content sx={{ width: "80px", height: "auto" }}>
           <Label style={{ margin: 10 }} size="large" variant="sponsors">

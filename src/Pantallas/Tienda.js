@@ -29,9 +29,9 @@ export default function Tienda(props) {
     const getListaProductos = async () => {
       const response = await getProductos(requestProductos);
       console.log(response.data);
-      console.log(paginador)
-      setPaginador(prev => ({...prev, data : response.data}))
-    }
+      console.log(paginador);
+      setPaginador((prev) => ({ ...prev, data: response.data }));
+    };
 
     getListaProductos();
   }, [requestProductos, paginador]);
@@ -57,9 +57,7 @@ export default function Tienda(props) {
             justifyContent: "center",
           }}
         >
-
-
-        {paginador.data.map(data =>( 
+          {paginador.data.map((data) => (
             <Card
               ctaText="Detalles"
               onClick={() => detalles(data)}
@@ -71,7 +69,11 @@ export default function Tienda(props) {
               {" "}
               {/* Ajusta el ancho y alto aquí */}
               <Card.Image
-                src={data.imagen ? data.imagen: "https://via.placeholder.com/600x400/d3d9df/d3d9df.png"}
+                src={
+                  data.imagen
+                    ? data.imagen
+                    : "https://via.placeholder.com/600x400/d3d9df/d3d9df.png"
+                }
                 alt="placeholder, blank area with an gray background color"
                 aspectRatio="16:9"
               />
@@ -80,9 +82,7 @@ export default function Tienda(props) {
                 ${data.precio}
               </Card.Description>
             </Card>
-        ))}
-          
-
+          ))}
         </Box>
       </ThemeProvider>
       <Pagination
