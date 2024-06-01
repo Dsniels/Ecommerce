@@ -1,33 +1,31 @@
-import { Box, Card,  Heading, ThemeProvider } from "@primer/react-brand";
+import { Box, Card, Heading, ThemeProvider } from "@primer/react-brand";
 import React, { useEffect, useState } from "react";
 import { Pagination } from "@primer/react";
 import { getProductos } from "../Actions/ProductoAction";
 
 export default function Tienda(props) {
-
   const [requestProductos, setRequestProductos] = useState({
     page: 1,
     pageSize: 6,
   });
-  
+
   const [paginador, setPaginador] = useState({
-    count : 1,
+    count: 1,
     pageIndex: 1,
     pageSize: 1,
-    pageCount:10,
-    data : []
-  })
+    pageCount: 10,
+    data: [],
+  });
 
-  const handleChange = (e, value) =>{
-    e.preventDefault()
-    setRequestProductos( (prev)=> ({
+  const handleChange = (e, value) => {
+    e.preventDefault();
+    setRequestProductos((prev) => ({
       ...prev,
-      pageIndex: value
-    }) );
+      pageIndex: value,
+    }));
+  };
 
-  }
-
-  useEffect( ()=>{
+  useEffect(() => {
     const getListaProductos = async () => {
       const response = await getProductos(requestProductos);
       console.log(response.data);
@@ -36,10 +34,7 @@ export default function Tienda(props) {
     }
 
     getListaProductos();
-
   }, [requestProductos]);
-
-  
 
   const detalles = async (item) => {
     props.history.push("/Detalles/" + item._id);
@@ -55,21 +50,14 @@ export default function Tienda(props) {
         >
           Productos
         </Heading>
-        <Box style={{display:'flex', alignItems: 'center', justifyContent:'center'}}>
-
-      
         <Box
           style={{
-            gap:50,            
-            display: 'grid',
-            width:'1800px',
-            gridTemplateColumns : 'repeat(auto-fill, minmax(15rem, 1fr))',
-            justifyContent: 'center',
-            padding:70
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
-          
-          backgroundColor="default"
         >
+
 
         {paginador.data.map(data =>( 
             <Card
@@ -94,15 +82,15 @@ export default function Tienda(props) {
             </Card>
         ))}
           
+
         </Box>
-      </Box>
       </ThemeProvider>
-       <Pagination
+      <Pagination
         pageCount={3}
         currentPage={paginador.pageIndex}
         marginPageCount={1}
         onPageChange={handleChange}
-      /> 
+      />
     </>
   );
 }
