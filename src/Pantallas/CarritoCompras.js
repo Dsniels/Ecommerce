@@ -3,12 +3,33 @@ import { Heading, IconButton,PageLayout } from '@primer/react'
 import { Box, Button, Grid, Image,Text } from '@primer/react-brand'
 import React from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import {useStateValue} from '../Context/store';
+import { deleteItem } from '../Actions/CarritoActions';
 
-export default function CarritoCompras() {
+
+
+
+export default function CarritoCompras(props) {
     const history = useHistory();
     const ProcesoCompra = () => {
         history.push('/ProcesoCompra');
     }
+
+    const [{sesionCarrito}, dispatch] = useStateValue();
+
+    const EliminarItem = async (item) =>{
+        const indice = sesionCarrito.items.findIndex(i => i._id === item._id);
+
+        if(indice !== -1 ){
+            await deleteItem(sesionCarrito, indice, dispatch);
+            props.history.push('/Carriot');
+        }else{
+            console.log('Algo salio mal');
+        }
+
+    }
+
+
 
 
   return (
