@@ -9,11 +9,11 @@ const Detalles = (props) => {
   
   const [productoSeleccionado, setProductoSeleccionado] = useState({
     id : 0,
-    nombre:'',
+    name:'',
     descripcion :'',
     stock:0,
     marcaId:0,
-    marcaNombre:'',
+    marca:'',
     precio:0.0,
     imagen:'',
     categoria:'',
@@ -30,12 +30,12 @@ const Detalles = (props) => {
 
     getProductoAsync();
 
-  }, [setProductoSeleccionado] );
+  }, [setProductoSeleccionado, props.match.params.id] );
 
   const agregarCarrito = async () =>{
     const item = {
-      id: productoSeleccionado.id,
-      producto: productoSeleccionado.nombre,
+      id: productoSeleccionado._id,
+      producto: productoSeleccionado.name,
       precio: productoSeleccionado.precio,
       cantidad: cantidad,
       imagen: productoSeleccionado.imagen,
@@ -62,13 +62,13 @@ const Detalles = (props) => {
       </PageLayout.Header>
 
         <PageLayout.Content  sx={{width:'80px', height:'auto'}}>
-          <Label style={{margin:10}} size='large' variant='sponsors'>{productoSeleccionado.marcaNombre}</Label>
+          <Label style={{margin:10}} size='large' variant='sponsors'>{productoSeleccionado.marca}</Label>
           <Image style={{ borderRadius:'10px' ,position:'relative',width:'100%', height:'auto'}} src={productoSeleccionado.imagen ? productoSeleccionado.imagen : "https://via.placeholder.com/600x400/d3d9df/d3d9df.png"}/>
 
         </PageLayout.Content>
         <PageLayout.Pane width='large' divider='line' resizable={false} >
           <Box style={{ justifyContent:'left', borderBlockColor:'whitesmoke'}}>
-            <Heading  style={{fontSize:'60px', fontSmooth:'always', fontWeight:'bolder',paddingTop:30, paddingBottom:10, display: 'flex', color:'whitesmoke', justifyContent:'left'}} >{productoSeleccionado.nombre} </Heading>
+            <Heading  style={{fontSize:'60px', fontSmooth:'always', fontWeight:'bolder',paddingTop:30, paddingBottom:10, display: 'flex', color:'whitesmoke', justifyContent:'left'}} >{productoSeleccionado.name} </Heading>
             <Heading  style={{fontSize:'20px', fontSmooth:'always', fontWeight:'bolder',paddingTop:30, paddingBottom:10, display: 'flex', color:'whitesmoke', justifyContent:'left'}} >Detalles </Heading>
             <Text style={{overflowWrap:'break-word'}} weight='normal' size='100'>{productoSeleccionado.descripcion}</Text>
             <Heading  style={{fontSize:'20px', fontSmooth:'always', fontWeight:'bolder',paddingTop:30, paddingBottom:10, display: 'flex', color:'whitesmoke', justifyContent:'left'}} >Precio: </Heading>
