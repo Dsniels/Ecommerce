@@ -28,7 +28,15 @@ export default function CarritoCompras(props) {
         }
 
     }
+    const array = sesionCarrito ? sesionCarrito.items : []
 
+    const PrecioTotal = () => {
+        let Total = 0;
+        array.forEach((item) => {
+            Total += item.price * item.quantity
+        });
+        return Total;
+    }
 
 
 
@@ -43,24 +51,24 @@ export default function CarritoCompras(props) {
                         <Text font='hubot-sans' size='500' weight='extrabold'>Mi carrito</Text>
                     </Box>
 
-                </Grid.Column>
+                </Grid.Column>{ array.map((item) => (
                 <Grid.Column style={{ padding:10,backgroundColor:'#424a53', borderRadius:'10px',display:'flex', justifyContent:'space-between', alignItems:'center'}} start={2} span={{small:12, xsmall:12, large:15, xlarge:15}}>
                     <Box>
                         <Image src='https://avatars.githubusercontent.com/u/92997159?v=4' width={40} height={40} />
                     </Box>
                     <Box >
-                        Tenis Nike
+                        {item.name}
                     </Box>
                     <Box>
-                        $132
+                        ${item.price}
                     </Box>
                     <Box>
                         <Box style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                            <IconButton variant='invisible' icon={NoEntryIcon}/> 1 <IconButton variant='invisible' icon={FeedPlusIcon}/>
+                            <IconButton variant='invisible' icon={NoEntryIcon} onClick={EliminarItem(item)} /> {item.quantity} 
                         </Box>
                     </Box>
                     <IconButton variant='invisible' icon={TrashIcon} />
-                </Grid.Column>
+                </Grid.Column>))}
 
 
             </Grid>
@@ -76,7 +84,7 @@ export default function CarritoCompras(props) {
                         <Text font='hubot-sans'> Subtotal</Text>
                     </Grid.Column>
                     <Grid.Column start={{xlarge:5, xxlarge:5, large:5, small:9, xsmall:9}} span={2}>
-                        <Text font='hubot-sans'> $132</Text>
+                        <Text font='hubot-sans'> ${PrecioTotal()}</Text>
                     </Grid.Column>
                     <Grid.Column start={{xlarge:2, xxlarge:2, large:1, small:2, xsmall:2}} span={3}>
                         <Text font='hubot-sans'> Envio</Text>
@@ -88,7 +96,7 @@ export default function CarritoCompras(props) {
                         <Text font='hubot-sans' weight='bold'> Total</Text>
                     </Grid.Column>
                     <Grid.Column start={{xlarge:5, xxlarge:5, large:5, small:9, xsmall:9}} span={2}>
-                        <Text font='hubot-sans' weight='bold'> $145</Text>
+                        <Text font='hubot-sans' weight='bold'> ${PrecioTotal()+13}</Text>
                     </Grid.Column>
                     <Grid.Column style={{margin:15,display:'flex', justifyContent:'center'}} start={{xlarge:1, xxlarge:1, large:1,small:2, xsmall:2}} span={{small:10, xsmall:10, xxlarge:7, large:7, xlarge:7}}>
                         <Button block size='medium'  variant='primary' onClick={ProcesoCompra}>Comprar</Button>
