@@ -4,6 +4,10 @@ import { Pagination } from "@primer/react";
 import { getProductos } from "../Actions/ProductoAction";
 
 export default function Tienda(props) {
+
+
+
+  
   const [requestProductos, setRequestProductos] = useState({
     page: 1,
     pageSize: 6,
