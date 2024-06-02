@@ -11,8 +11,13 @@ import {
 } from "@primer/react-brand";
 import React from "react";
 import { GitCommitIcon } from "@primer/octicons-react";
+import { useStateValue } from "../../Context/store";
+
+
 
 const Perfil = () => {
+  const [{sesionUsuario}, dispatch] = useStateValue();
+
 
   return (
     <PageLayout sx={{height:'1080px'}} columnGap="30px" rowGap="30px" >
@@ -49,14 +54,14 @@ const Perfil = () => {
               <TextInput
                 style={{ backgroundColor: "transparent" }}
                 size="auto"
-                value="Daniel Salazar"
+                value={sesionUsuario ? sesionUsuario.usuario.name : 'No sesion'}
                 disabled={true}
               />
               <FormControl.Label>Email</FormControl.Label>
               <TextInput
                 style={{ backgroundColor: "transparent" }}
                 size="large"
-                value="daniel@outlook.com"
+                value={sesionUsuario? sesionUsuario.usuario.email : "daniel@outlook.com"}
                 type="email"
                 disabled={true}
                 ty
