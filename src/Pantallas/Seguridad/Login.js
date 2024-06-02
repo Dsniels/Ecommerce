@@ -1,10 +1,14 @@
 import { Box, FormControl, Grid, Heading, TextInput } from '@primer/react-brand'
 import { Button, Grommet } from 'grommet'
-import React from 'react'
+import React , {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import useStyles from '../../Themes/useStyles';
+import {useStateValue} from '../../Context/store';
+import { LoginUsuario, googleAuth } from '../../Actions/UsuarioAction';
 
-export default function Login() {
+
+
+export default function Login(props) {
     const kindButtonTheme = {
     global: {
       colors: {
@@ -65,10 +69,72 @@ export default function Login() {
       },
     },
   };
+ 
+  const [{sesionUsuario}, dispatch] = useStateValue();
+ 
+
+  const [usuario, setUsuario] = useState({
+    email : '',
+    password : ''
+  })
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setUsuario(prev => ({
+      ...prev,
+      [name] : value
+    }))
+  }
+
+  const getGoogleUser= () => {
+    googleAuth(dispatch).then(response => {
+      if(response.status === 200){
+        window.localStorage.setItem('token', response.data.token);
+        props.history.push('/')
+      }
+    }).catch(error => {
+      console.log('error al inciar sesion', error)
+    }) 
+
+
+  }
+
+
+  const loginGoogle = (e) => {
+    e.preventDefault();
+    window.open(
+      `${process.env.REACT_APP_URL_BASE}/api/users/google/`,'_self'
+    )
+  }
+
+
+  const loginEventoUsuario = () =>{
+    console.log('dispatch', dispatch)
+
+    LoginUsuario(usuario, dispatch).then(response => {
+      console.log('response', response)
+      if(response.status === 200){
+        window.localStorage.setItem('token', response.data.token);
+        console.log('el login fue exitosos', response.data);
+        console.log('SESION USUARIO',sesionUsuario)
+        props.history.push('/');
+        
+      }else{
+        console.log('Error en el proceso de Login');
+      }
+    })
+
+  }
+
+
+
+
+
+
     const classes = useStyles();
   return (
 <Box padding={{narrow:'spacious', wide:'spacious', regular:'normal'}} style={{height:'100%',width:'auto', display:'flex', justifyContent:'center'}}>
-    <form style={{borderRadius:20,backgroundColor:'#1f2328', padding:20}}>
+    <form onSubmit={(e) => e.preventDefault()} style={{borderRadius:20,backgroundColor:'#1f2328', padding:20}}>
         <Box>
             <Heading style={{textAlign:'center',color:'#f6f8fa', paddingBottom:'30px', paddingTop:'40px'}}>Iniciar Sesion</Heading>
         </Box>
@@ -76,12 +142,12 @@ export default function Login() {
 
             <Grid.Column style={{paddingTop:30}} start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
                 <FormControl fullWidth  >
-                  <TextInput invisible placeholder="Correo" />
+                  <TextInput invisible placeholder="Correo" name='email' value={usuario.email} onChange={handleChange} />
                 </FormControl>
             </Grid.Column>
             <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
                 <FormControl fullWidth  >
-                  <TextInput invisible placeholder="Contraseña" />
+                  <TextInput invisible placeholder="Contraseña" name='password' value={usuario.password} onChange={handleChange} />
                 </FormControl>
             </Grid.Column>
             <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
@@ -98,6 +164,13 @@ export default function Login() {
                   style={{marginBottom:20 ,color: "#f6f8fa", ":active": { color: "white" } }}
                   label="Iniciar Sesion"
                   primary
+                  onClick={loginEventoUsuario}
+                />
+                  <Button
+                  style={{marginBottom:20 ,color: "#f6f8fa", ":active": { color: "white" } }}
+                  label="Iniciar Sesion con google"
+                  primary
+                  onClick={loginGoogle}
                 />
                 <Link to="login" variant='body1' className={classes.link} >¿No tienes una Cuenta?</Link>
               </Box>
