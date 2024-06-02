@@ -1,10 +1,48 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button, CTABanner, Heading, Image, River, Stack, Text} from '@primer/react-brand';
 import useStyles from '../Themes/useStyles';
 import { Box } from '@primer/react';
+import { useStateValue } from '../Context/store';
+import {googleAuth} from '../Actions/UsuarioAction'
 
 
 const Inicio = (props) => {
+
+    const [{sesionUsuario}, dispatch] = useStateValue();
+
+/*  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        googleAuth(dispatch).then(response => {
+            if(response.status === 200){
+                window.localStorage.setItem('token', response.data.token);
+                console.log('el login fue exitosos', response.data);
+                console.log('SESION USUARIO',sesionUsuario)
+                
+            }else{
+                console.log('Error en el proceso de Login');
+            }
+        })
+        /* if (!request.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const response = await request;
+        console.log(response)
+        // En mi caso, almacené el objeto usuario en el estado global (redux)
+        dispatch({
+          type: 'INICIAR_SESION',
+          sesion: response.data,
+          autenticado: false,
+        }); */
+     /*  } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+
+    fetchUser();
+  },[] ); */  
+
     const classes = useStyles();
     
 
