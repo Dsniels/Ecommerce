@@ -4,9 +4,15 @@ import { ActionList, ActionMenu, Avatar, Octicon, } from "@primer/react";
 import { PasteIcon, PersonIcon, SignInIcon, SignOutIcon } from "@primer/octicons-react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { Box } from "@primer/react-brand";
+import { useStateValue } from "../../Context/store";
 
 
 const MenuCliente = (props) => {
+
+  const [{sesionUsuario}, dispatch] = useStateValue();
+
+
+
   const classes = useStyles();
   const history = useHistory();
   const perfil = () => {
@@ -22,17 +28,29 @@ const MenuCliente = (props) => {
     history.push("/Registro");
   }
 
+console.log('MENU CLIENTEEEE',sesionUsuario)
 
+  const salirSesion = (e) => {
+    e.preventDefault();
+    localStorage.removeItem('token');
+    dispatch({
+      type : 'SALIR_SESION',
+      nuevoUsuario : null,
+      autenticado : false
+    });
+
+    history.push('/login');
+
+  } 
 
 
   return (
-
     <Box>
       {/* ActionMenu */}
       <ActionMenu renderAnchor={null} >
         <ActionMenu.Button style={{ fontSize: 16, color: 'white', paddingLeft: 10, textAlign: 'center', display: 'flex', backgroundColor: 'transparent' }} variant="invisible">
           <Avatar size={50} className={classes.avatarPerfilAppBar} src="https://avatars.githubusercontent.com/u/92997159?v=4" />
-          Daniel Salazar
+          { sesionUsuario  ? (sesionUsuario.autenticado === true ? sesionUsuario.usuario.name + ' ' + sesionUsuario.usuario.lastname : "NO AUTENTICADO") : "no sesion" }
         </ActionMenu.Button>
         <ActionMenu.Overlay  align="center" side="outside-bottom">
           <ActionList style={{ display: 'flex' }} className={classes.ActionList}>
@@ -49,7 +67,7 @@ const MenuCliente = (props) => {
               Mis Pedidos
             </ActionList.Item>
             <ActionList.Divider />
-            <ActionList.Item variant="danger" className={classes.ActionListItems}>
+            <ActionList.Item onSelect={salirSesion} variant="danger" className={classes.ActionListItems}>
               <ActionList.LeadingVisual>
                 <Octicon icon={SignOutIcon} size={30} className={classes.SelectIcon}></Octicon>
               </ActionList.LeadingVisual>
