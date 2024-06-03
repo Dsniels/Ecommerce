@@ -6,7 +6,7 @@ import { getProductos } from "../Actions/ProductoAction";
 export default function Tienda(props) {
   const [requestProductos, setRequestProductos] = useState({
     page: 1,
-    pageSize: 6,
+    pageSize: 4,
   });
 
   const [paginador, setPaginador] = useState({
@@ -34,7 +34,7 @@ export default function Tienda(props) {
     };
 
     getListaProductos();
-  }, [requestProductos, paginador]);
+  }, [requestProductos]);
 
   const detalles = async (item) => {
     props.history.push("/Detalles/" + item._id);
@@ -53,8 +53,9 @@ export default function Tienda(props) {
         <Box
           style={{
             display: "flex",
+            marginTop: 30,
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "space-around",
           }}
         >
           {paginador.data.map((data) => (
