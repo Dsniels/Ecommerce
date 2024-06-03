@@ -4,44 +4,40 @@ import useStyles from '../Themes/useStyles';
 import { Box } from '@primer/react';
 import { useStateValue } from '../Context/store';
 import {googleAuth} from '../Actions/UsuarioAction'
+import { TrackChangesOutlined } from '@material-ui/icons';
 
 
 const Inicio = (props) => {
 
     const [{sesionUsuario}, dispatch] = useStateValue();
 
-/*  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        googleAuth(dispatch).then(response => {
-            if(response.status === 200){
-                window.localStorage.setItem('token', response.data.token);
-                console.log('el login fue exitosos', response.data);
-                console.log('SESION USUARIO',sesionUsuario)
-                
-            }else{
-                console.log('Error en el proceso de Login');
-            }
-        })
-        /* if (!request.ok) {
-          throw new Error('Network response was not ok');
+    useEffect(() => {
+        const getuser = async () =>{
+            fetch('http://localhost:8080/api/users/login/done', {
+                method : 'GET',
+                credentials : 'include',
+                headers : {
+                    Accept : 'application/json',
+                    'Content-Type' : 'application/json',
+                    'Access-Controll-Allow-Credentials' : true
+                },
+            }).then(response => {
+                console.log(response);
+                if(response.status === 200) return response.json();
+                throw new Error('Application failed')
+            }).then(res => {
+                console.log(res.user)
+                dispatch({
+                    type : 'INICIAR_SESION',
+                    sesion : res.user,
+                    autenticado:true
+                })
+                window.localStorage.setItem('token', res.user.token);
+
+            })
         }
-
-        const response = await request;
-        console.log(response)
-        // En mi caso, almacené el objeto usuario en el estado global (redux)
-        dispatch({
-          type: 'INICIAR_SESION',
-          sesion: response.data,
-          autenticado: false,
-        }); */
-     /*  } catch (error) {
-        console.error('Error fetching user:', error);
-      }
-    };
-
-    fetchUser();
-  },[] ); */  
+        getuser()
+    }, [])
 
     const classes = useStyles();
     

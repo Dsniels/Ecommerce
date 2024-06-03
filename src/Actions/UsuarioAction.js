@@ -46,6 +46,15 @@ export const registrarUsuario = (usuario, dispatch) =>{
 }
 
 
+export const logOut = () => {
+    return new Promise((resolve, eject) => {
+        HttpCliente.get('/api/users/logout').then(response => {
+            resolve(response)
+        }).catch(err => {
+            resolve(err)
+        })
+    })
+}
 
 export const LoginUsuario = (usuario, dispatch) =>{
     return new Promise((resolve, eject) => {
@@ -88,6 +97,9 @@ export const GetUsuario = (dispatch) =>{
     });
 
 }
+
+
+
 
 
 export const googleAuth = (dispatch) =>{

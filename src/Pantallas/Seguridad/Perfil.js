@@ -46,7 +46,7 @@ const Perfil = () => {
           <Stack  direction="vertical">
             <Image
               style={{ borderRadius: "50%", width: 100, height: 100 }}
-              src="https://avatars.githubusercontent.com/u/92997159?v=4"
+              src={sesionUsuario ? (sesionUsuario.usuario.image ? sesionUsuario.usuario.image :"https://avatars.githubusercontent.com/u/92997159?v=4" ): "https://avatars.githubusercontent.com/u/92997159?v=4"}
             />
 
             <FormControl>

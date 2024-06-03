@@ -86,19 +86,6 @@ export default function Login(props) {
     }))
   }
 
-  const getGoogleUser= () => {
-    googleAuth(dispatch).then(response => {
-      if(response.status === 200){
-        window.localStorage.setItem('token', response.data.token);
-        props.history.push('/')
-      }
-    }).catch(error => {
-      console.log('error al inciar sesion', error)
-    }) 
-
-
-  }
-
 
   const loginGoogle = (e) => {
     e.preventDefault();
@@ -112,11 +99,8 @@ export default function Login(props) {
     console.log('dispatch', dispatch)
 
     LoginUsuario(usuario, dispatch).then(response => {
-      console.log('response', response)
       if(response.status === 200){
         window.localStorage.setItem('token', response.data.token);
-        console.log('el login fue exitosos', response.data);
-        console.log('SESION USUARIO',sesionUsuario)
         props.history.push('/');
         
       }else{
@@ -125,9 +109,6 @@ export default function Login(props) {
     })
 
   }
-
-
-
 
 
 
