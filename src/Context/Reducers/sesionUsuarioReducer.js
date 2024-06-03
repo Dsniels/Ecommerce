@@ -6,7 +6,8 @@ export const initialState = {
         lastname : "",
         name : '',
         role : '',
-        _id : ''
+        _id : '',
+        image : ''
     },
     autenticado: false
 };
