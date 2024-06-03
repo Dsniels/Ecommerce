@@ -3,12 +3,12 @@ import { Box, FormControl, Heading, Label, PageLayout } from "@primer/react";
 import { Button, Image, Text, TextInput } from "@primer/react-brand";
 import React, { useEffect, useState } from "react";
 import { getProducto } from "../Actions/ProductoAction";
-import { addItem } from '../Actions/CarritoActions';
-import { useStateValue } from '../Context/store';
+import { addItem } from "../Actions/CarritoActions";
+import { useStateValue } from "../Context/store";
 
 const Detalles = (props) => {
   const [cantidad, setCantidad] = useState(1);
-  const [{sesionCarrito}, dispatch] = useStateValue()
+  const [{ sesionCarrito }, dispatch] = useStateValue();
 
   const [productoSeleccionado, setProductoSeleccionado] = useState({
     id: 0,
@@ -41,13 +41,12 @@ const Detalles = (props) => {
       quantity: cantidad,
       imagen: productoSeleccionado.imagen,
       marca: productoSeleccionado.marcaNombre,
-      unit_amount : productoSeleccionado.precio
+      unit_amount: productoSeleccionado.precio,
     };
 
     await addItem(sesionCarrito, item, dispatch);
 
-    props.history.push('/Carrito')
-
+    props.history.push("/Carrito");
   };
 
   const regresar = () => {
@@ -171,7 +170,9 @@ const Detalles = (props) => {
                 placeholder="alphanumeric"
               />
             </FormControl>
-            <Button onClick={agregarCarrito} variant="primary">Agregar al carrito</Button>
+            <Button onClick={agregarCarrito} variant="primary">
+              Agregar al carrito
+            </Button>
           </Box>
         </PageLayout.Pane>
       </PageLayout>

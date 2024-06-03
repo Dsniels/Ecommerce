@@ -13,15 +13,12 @@ import React from "react";
 import { GitCommitIcon } from "@primer/octicons-react";
 import { useStateValue } from "../../Context/store";
 
-
-
 const Perfil = () => {
-  const [{sesionUsuario}, dispatch] = useStateValue();
-
+  const [{ sesionUsuario }, dispatch] = useStateValue();
 
   return (
-    <PageLayout sx={{height:'1080px'}} columnGap="30px" rowGap="30px" >
-      <PageLayout.Header >
+    <PageLayout sx={{ height: "1080px" }} columnGap="30px" rowGap="30px">
+      <PageLayout.Header>
         <Box
           style={{
             color: "whitesmoke",
@@ -30,23 +27,59 @@ const Perfil = () => {
             fontWeight: "bold",
             display: "flex",
             justifyContent: "start",
-            '@media (max-width: 600px)': { // Consulta de medios para dispositivos móviles
-              textAlign: 'center', // Centrar el texto en dispositivos móviles
+            "@media (max-width: 600px)": {
+              // Consulta de medios para dispositivos móviles
+              textAlign: "center", // Centrar el texto en dispositivos móviles
             },
-            textAlign:'start',
-            marginX: 'auto',
-            maxWidth: '80%',
+            textAlign: "start",
+            marginX: "auto",
+            maxWidth: "80%",
           }}
         >
-          <Heading as="h2" style={{marginLeft:'40px',fontSize:'5em', fontFamily:'monospace'}}>Perfil</Heading>
+          <Heading
+            as="h2"
+            style={{
+              marginLeft: "40px",
+              fontSize: "5em",
+              fontFamily: "monospace",
+            }}
+          >
+            Perfil
+          </Heading>
         </Box>
       </PageLayout.Header>
-      <PageLayout.Pane  position="start" divider='line' padding="normal" resizable={false} sx={{overflow:'hidden' , display:'flex', justifyContent:'center' ,marginBottom:'50px', height:'auto' }} width='large' >
-        <Box style={{ width: ['300px',"200px"], height: "auto",marginTop:'50px', marginBottom:'50px' }}>
-          <Stack  direction="vertical">
+      <PageLayout.Pane
+        position="start"
+        divider="line"
+        padding="normal"
+        resizable={false}
+        sx={{
+          overflow: "hidden",
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "50px",
+          height: "auto",
+        }}
+        width="large"
+      >
+        <Box
+          style={{
+            width: ["300px", "200px"],
+            height: "auto",
+            marginTop: "50px",
+            marginBottom: "50px",
+          }}
+        >
+          <Stack direction="vertical">
             <Image
               style={{ borderRadius: "50%", width: 100, height: 100 }}
-              src={sesionUsuario ? (sesionUsuario.usuario.image ? sesionUsuario.usuario.image :"https://avatars.githubusercontent.com/u/92997159?v=4" ): "https://avatars.githubusercontent.com/u/92997159?v=4"}
+              src={
+                sesionUsuario
+                  ? sesionUsuario.usuario.image
+                    ? sesionUsuario.usuario.image
+                    : "https://avatars.githubusercontent.com/u/92997159?v=4"
+                  : "https://avatars.githubusercontent.com/u/92997159?v=4"
+              }
             />
 
             <FormControl>
@@ -54,14 +87,18 @@ const Perfil = () => {
               <TextInput
                 style={{ backgroundColor: "transparent" }}
                 size="auto"
-                value={sesionUsuario ? sesionUsuario.usuario.name : 'No sesion'}
+                value={sesionUsuario ? sesionUsuario.usuario.name : "No sesion"}
                 disabled={true}
               />
               <FormControl.Label>Email</FormControl.Label>
               <TextInput
                 style={{ backgroundColor: "transparent" }}
                 size="large"
-                value={sesionUsuario? sesionUsuario.usuario.email : "daniel@outlook.com"}
+                value={
+                  sesionUsuario
+                    ? sesionUsuario.usuario.email
+                    : "daniel@outlook.com"
+                }
                 type="email"
                 disabled={true}
                 ty
@@ -76,7 +113,6 @@ const Perfil = () => {
               />
               <ButtonGroup>
                 <Button variant="primary">Editar</Button>
-
               </ButtonGroup>
             </FormControl>
           </Stack>
@@ -105,10 +141,22 @@ const Perfil = () => {
           </Timeline>
         </Box> */}
       </PageLayout.Pane>
-      <PageLayout.Content width="medium" padding="none" sx={{gap:4,marginX:'30px',minWidth:'300px',display:'inline-flex'  ,height:'auto' }} >
-        <Box style={{width:'100%'}}>
-          <Timeline  >
-            <Heading as="h5" style={{margin:10, paddingBottom:20}}>Mis pedidos</Heading>
+      <PageLayout.Content
+        width="medium"
+        padding="none"
+        sx={{
+          gap: 4,
+          marginX: "30px",
+          minWidth: "300px",
+          display: "inline-flex",
+          height: "auto",
+        }}
+      >
+        <Box style={{ width: "100%" }}>
+          <Timeline>
+            <Heading as="h5" style={{ margin: 10, paddingBottom: 20 }}>
+              Mis pedidos
+            </Heading>
             <Timeline.Item>
               <Timeline.Badge>
                 <Octicon icon={GitCommitIcon} />
@@ -129,7 +177,7 @@ const Perfil = () => {
             </Timeline.Item>
           </Timeline>
         </Box>
-{/*         <Box style={{ width: "300px", height: "400px" }}>
+        {/*         <Box style={{ width: "300px", height: "400px" }}>
           <Stack direction="vertical">
             <Image
               style={{ borderRadius: "50%", width: 100, height: 100 }}
@@ -169,7 +217,7 @@ const Perfil = () => {
           </Stack>
         </Box> */}
       </PageLayout.Content>
-      
+
       <PageLayout.Footer></PageLayout.Footer>
     </PageLayout>
   );

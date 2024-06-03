@@ -1,10 +1,9 @@
 //import SesionCarritoReducer from "./sesionCarritoReducer";
-import SesionUsuarioReducer from './sesionUsuarioReducer';
+import SesionUsuarioReducer from "./sesionUsuarioReducer";
 
-
-export const mainReducer = ({sesionUsuario}, action) => {
+export const mainReducer = ({ sesionUsuario }, action) => {
   return {
-  //  sesionCarrito: SesionCarritoReducer(SesionCarrito, action),
-    sesionUsuario : SesionUsuarioReducer(sesionUsuario, action)
+    //  sesionCarrito: SesionCarritoReducer(SesionCarrito, action),
+    sesionUsuario: SesionUsuarioReducer(sesionUsuario, action),
   };
 };
