@@ -27,19 +27,18 @@ function App() {
       },
     },
   });
-  const [{sesionUsuario}, dispatch] = useStateValue();
+  const [{ sesionUsuario }, dispatch] = useStateValue();
   const [servidorResponse, setServidorResponse] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
-
       if (!servidorResponse) {
-        await GetUsuario(dispatch);        
+        await GetUsuario(dispatch);
         setServidorResponse(true);
       }
     };
-  
+
     fetchData();
-  }, [servidorResponse, dispatch]); 
+  }, [servidorResponse, dispatch]);
 
   return (
     <PrimerThemeProvider colorMode="dark" theme={theme}>
