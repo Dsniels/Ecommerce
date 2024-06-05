@@ -14,25 +14,22 @@ import { GitCommitIcon } from "@primer/octicons-react";
 import { useStateValue } from "../../Context/store";
 
 const Perfil = () => {
-
-  const [{sesionUsuario}, dispatch] = useStateValue();
+  const [{ sesionUsuario }, dispatch] = useStateValue();
 
   const [usuario, setUsuario] = useState({
-    _id : '',
-    name : '',
-    password : '',
-    image : '',
-    email:'',
-    imagenTemporal : ''
-  })
+    _id: "",
+    name: "",
+    password: "",
+    image: "",
+    email: "",
+    imagenTemporal: "",
+  });
 
   useEffect(()=> {
     if(sesionUsuario){
       setUsuario(sesionUsuario.usuario)
     }
   }, [sesionUsuario]);
-
-
 
   return (
     <PageLayout sx={{ height: "1080px" }} columnGap="30px" rowGap="30px">
@@ -91,8 +88,11 @@ const Perfil = () => {
           <Stack direction="vertical">
             <Image
               style={{ borderRadius: "50%", width: 100, height: 100 }}
-              src={usuario.image ? usuario.image :"https://avatars.githubusercontent.com/u/92997159?v=4" }
-
+              src={
+                usuario.image
+                  ? usuario.image
+                  : "https://avatars.githubusercontent.com/u/92997159?v=4"
+              }
             />
 
             <FormControl>
@@ -100,14 +100,14 @@ const Perfil = () => {
               <TextInput
                 style={{ backgroundColor: "transparent" }}
                 size="auto"
-                value={usuario.name }
+                value={usuario.name}
                 disabled={true}
               />
               <FormControl.Label>Email</FormControl.Label>
               <TextInput
                 style={{ backgroundColor: "transparent" }}
                 size="large"
-                value={usuario.email }
+                value={usuario.email}
                 type="email"
                 disabled={true}
                 ty
