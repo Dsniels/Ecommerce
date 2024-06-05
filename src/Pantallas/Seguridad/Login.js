@@ -95,7 +95,6 @@ export default function Login(props) {
   };
 
   const loginEventoUsuario = () => {
-    console.log("dispatch", dispatch);
 
     LoginUsuario(usuario, dispatch).then((response) => {
       if (response.status === 200) {
