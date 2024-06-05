@@ -44,7 +44,6 @@ const MenuCliente = (props) => {
     history.push("/");
   };
 
-  console.log(sesionUsuario);
   return (
     <Box>
       {/* ActionMenu */}
@@ -67,6 +66,8 @@ const MenuCliente = (props) => {
               sesionUsuario
                 ? sesionUsuario.autenticado === true
                   ? sesionUsuario.usuario.image
+                    ? sesionUsuario.usuario.image
+                    : "https://avatars.githubusercontent.com/u/92997159?v=4"
                   : "https://avatars.githubusercontent.com/u/92997159?v=4"
                 : "https://avatars.githubusercontent.com/u/92997159?v=4"
             }

@@ -25,11 +25,9 @@ const Perfil = () => {
     imagenTemporal: "",
   });
 
-  useEffect(() => {
-    if (sesionUsuario) {
-      console.log(sesionUsuario);
-      setUsuario(sesionUsuario.usuario);
-      console.log(usuario);
+  useEffect(()=> {
+    if(sesionUsuario){
+      setUsuario(sesionUsuario.usuario)
     }
   }, [sesionUsuario]);
 
@@ -118,7 +116,7 @@ const Perfil = () => {
               <TextInput
                 style={{ backgroundColor: "transparent" }}
                 size="large"
-                value="********"
+                value={usuario.password}
                 type="password"
                 disabled={true}
               />

@@ -66,13 +66,11 @@ export const LoginUsuario = (usuario, dispatch) => {
     instancia
       .post("/api/users/login", usuario)
       .then((response) => {
-        console.log("login funcion", response.data);
         dispatch({
           type: "INICIAR_SESION",
           sesion: response.data,
           autenticado: true,
         });
-        console.log("Dispatch en funcion LoginUsuario:", dispatch);
         resolve(response);
       })
       .catch((error) => {
@@ -81,40 +79,39 @@ export const LoginUsuario = (usuario, dispatch) => {
   });
 };
 
-export const GetUsuario = (dispatch) => {
-  return new Promise((resolve, eject) => {
-    HttpCliente.get("/api/users/perfil")
-      .then((response) => {
-        console.log("response perfil", response.data);
-        dispatch({
-          type: "INICIAR_SESION",
-          sesion: response.data,
-          autenticado: true,
-        });
+export const GetUsuario = (dispatch) =>{
+    return new Promise((resolve, eject) => {
+        HttpCliente.get("/api/users/perfil").then(response =>{
+            dispatch({
+                type: "INICIAR_SESION",
+                sesion: response.data,
+                autenticado: true
+            })
+            resolve(response);
+        })
+        .catch(error => {
+            resolve(error.response);
+        })
+    });
 
-        resolve(response);
-      })
-      .catch((error) => {
-        resolve(error.response);
-      });
-  });
-};
+}
 
-export const googleAuth = (dispatch) => {
-  return new Promise((resolve, eject) => {
-    instancia
-      .get(`/api/users/done`)
-      .then((response) => {
-        console.log("auth google", response.data);
-        dispatch({
-          type: "INICIAR_SESION",
-          sesion: response.data,
-          autenticado: true,
-        });
-        resolve(response);
-      })
-      .catch((error) => {
-        resolve(error);
-      });
-  });
-};
+
+
+
+
+export const googleAuth = (dispatch) =>{
+    return new Promise((resolve, eject) => {
+        instancia.get(`/api/users/done`).then(response =>{
+            dispatch({
+                type : 'INICIAR_SESION',
+                sesion : response.data,
+                autenticado:true
+            })
+            resolve(response);
+        }).catch(error => { 
+            resolve(error);
+        })
+    })
+}
+

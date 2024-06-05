@@ -6,11 +6,13 @@ import {
   TextInput,
 } from "@primer/react-brand";
 import { Button, Grommet } from "grommet";
-import React from "react";
+import React, { useState } from "react";
 import useStyles from "../../Themes/useStyles";
 import { Link } from "react-router-dom";
+import { registrarUsuario } from "../../Actions/UsuarioAction";
+import { useStateValue } from "../../Context/store";
 
-export default function Registro() {
+export default function Registro(props) {
   const kindButtonTheme = {
     global: {
       colors: {
@@ -71,6 +73,30 @@ export default function Registro() {
       },
     },
   };
+  const [{sesionUsuario}, dispatch] = useStateValue();
+
+  const [usuario, setUsuario] = useState({
+    name : '',
+    email : '',
+    password : '',
+    lastname : ''  
+  });
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setUsuario(prev => ({
+      ...prev,
+      [name] : value
+    }))
+  }
+
+  const guardarUsuario =  () => {
+    registrarUsuario(usuario, dispatch).then(response => {
+      window.localStorage.setItem('token', response.data.token);
+      props.history.push('/')
+    })
+  }
+
   const classes = useStyles();
   return (
 <Box padding={{narrow:'spacious', wide:'spacious', regular:'normal'}} style={{height:'100%',width:'auto', display:'flex', justifyContent:'center'}}>
@@ -82,27 +108,22 @@ export default function Registro() {
 
             <Grid.Column  start={{xsmall:2,small:2, xlarge:2, large:2}} span={{small:2, xsmall:10, medium:2, large:2, xlarge:5 }}>
               <FormControl   fullWidth>
-                      <TextInput invisible placeholder="Nombre" />
+                      <TextInput onChange={handleChange} invisible name="name" placeholder="Nombre" />
               </FormControl>
             </Grid.Column>
             <Grid.Column start={{xsmall:2,small:2 }} span={{small:10, xsmall:10, medium:10, large:5, xlarge:5 }}>
                   <FormControl fullWidth>
-                    <TextInput invisible placeholder="Apellido" />
+                    <TextInput onChange={handleChange} invisible name="lastname" placeholder="Apellido" />
                   </FormControl> 
             </Grid.Column>
             <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
                 <FormControl fullWidth  >
-                  <TextInput invisible placeholder="Username" />
+                  <TextInput onChange={handleChange} invisible name="email"  placeholder="Correo" />
                 </FormControl>
             </Grid.Column>
             <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
                 <FormControl fullWidth  >
-                  <TextInput invisible placeholder="Correo" />
-                </FormControl>
-            </Grid.Column>
-            <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
-                <FormControl fullWidth  >
-                  <TextInput conr invisible placeholder="Contraseña" />
+                  <TextInput onChange={handleChange} invisible type="password" name="password" placeholder="Contraseña" />
                 </FormControl>
             </Grid.Column>
             <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
@@ -119,6 +140,7 @@ export default function Registro() {
                   style={{marginBottom:20 ,color: "#f6f8fa", ":active": { color: "white" } }}
                   label="Registrarse"
                   primary
+                  onClick={guardarUsuario}
                 />
                 <Link to="login" variant='body1' className={classes.link} >¿Ya tienes una Cuenta?</Link>
               </Box>

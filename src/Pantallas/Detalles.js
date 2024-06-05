@@ -11,7 +11,7 @@ const Detalles = (props) => {
   const [{ sesionCarrito }, dispatch] = useStateValue();
 
   const [productoSeleccionado, setProductoSeleccionado] = useState({
-    id: 0,
+    _id: 0,
     name: "",
     descripcion: "",
     stock: 0,
@@ -27,12 +27,14 @@ const Detalles = (props) => {
     const id = props.match.params.id;
     const getProductoAsync = async () => {
       const response = await getProducto(id);
+      console.log('Response item',response)
       setProductoSeleccionado(response.data);
+      console.log('Porducto selecct', productoSeleccionado);
     };
 
     getProductoAsync();
-  }, [setProductoSeleccionado, props.match.params.id]);
-
+  }, [setProductoSeleccionado]);
+  console.log(sesionCarrito);
   const agregarCarrito = async () => {
     const item = {
       id: productoSeleccionado._id,
@@ -40,14 +42,14 @@ const Detalles = (props) => {
       price: productoSeleccionado.precio,
       quantity: cantidad,
       imagen: productoSeleccionado.imagen,
-      marca: productoSeleccionado.marcaNombre,
       unit_amount: productoSeleccionado.precio,
     };
+    console.log(item)
 
     await addItem(sesionCarrito, item, dispatch);
 
-    props.history.push("/Carrito");
   };
+  console.log(cantidad)
 
   const regresar = () => {
     props.history.push("/Tienda");
@@ -163,11 +165,10 @@ const Detalles = (props) => {
                 min="1"
                 value={cantidad}
                 defaultValue={1}
-                onChange={(e) => setCantidad(e.target.value)}
+                onChange={(e) => setCantidad(+e.target.value)}
                 max={10}
                 style={{ scale: 2 }}
                 type="number"
-                placeholder="alphanumeric"
               />
             </FormControl>
             <Button onClick={agregarCarrito} variant="primary">
