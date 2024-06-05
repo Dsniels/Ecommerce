@@ -15,6 +15,9 @@ import Registro from "./Pantallas/Seguridad/Registro";
 import Login from "./Pantallas/Seguridad/Login";
 import CarritoCompras from "./Pantallas/CarritoCompras";
 import ProcesoCompra from "./Pantallas/ProcesoCompra";
+import { useStateValue } from "./Context/store";
+import { useEffect, useState } from "react";
+import { GetUsuario } from "./Actions/UsuarioAction";
 
 function App() {
   const themeMui = createTheme({
@@ -24,6 +27,19 @@ function App() {
       },
     },
   });
+  const [{sesionUsuario}, dispatch] = useStateValue();
+  const [servidorResponse, setServidorResponse] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+
+      if (!servidorResponse) {
+        await GetUsuario(dispatch);        
+        setServidorResponse(true);
+      }
+    };
+  
+    fetchData();
+  }, [servidorResponse, dispatch]); 
 
   return (
     <PrimerThemeProvider colorMode="dark" theme={theme}>
