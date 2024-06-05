@@ -79,39 +79,37 @@ export const LoginUsuario = (usuario, dispatch) => {
   });
 };
 
-export const GetUsuario = (dispatch) =>{
-    return new Promise((resolve, eject) => {
-        HttpCliente.get("/api/users/perfil").then(response =>{
-            dispatch({
-                type: "INICIAR_SESION",
-                sesion: response.data,
-                autenticado: true
-            })
-            resolve(response);
-        })
-        .catch(error => {
-            resolve(error.response);
-        })
-    });
+export const GetUsuario = (dispatch) => {
+  return new Promise((resolve, eject) => {
+    HttpCliente.get("/api/users/perfil")
+      .then((response) => {
+        dispatch({
+          type: "INICIAR_SESION",
+          sesion: response.data,
+          autenticado: true,
+        });
+        resolve(response);
+      })
+      .catch((error) => {
+        resolve(error.response);
+      });
+  });
+};
 
-}
-
-
-
-
-
-export const googleAuth = (dispatch) =>{
-    return new Promise((resolve, eject) => {
-        instancia.get(`/api/users/done`).then(response =>{
-            dispatch({
-                type : 'INICIAR_SESION',
-                sesion : response.data,
-                autenticado:true
-            })
-            resolve(response);
-        }).catch(error => { 
-            resolve(error);
-        })
-    })
-}
-
+export const googleAuth = (dispatch) => {
+  return new Promise((resolve, eject) => {
+    instancia
+      .get(`/api/users/done`)
+      .then((response) => {
+        dispatch({
+          type: "INICIAR_SESION",
+          sesion: response.data,
+          autenticado: true,
+        });
+        resolve(response);
+      })
+      .catch((error) => {
+        resolve(error);
+      });
+  });
+};

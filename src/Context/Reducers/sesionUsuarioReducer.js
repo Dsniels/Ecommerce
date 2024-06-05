@@ -13,7 +13,6 @@ export const initialState = {
 };
 
 const sesionUsuarioReducer = (state = initialState, action) => {
-
   switch (action.type) {
     case "INICIAR_SESION":
       return {

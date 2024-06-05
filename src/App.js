@@ -38,7 +38,7 @@ function App() {
     };
 
     fetchData();
-  }, [servidorResponse]); 
+  }, [servidorResponse]);
 
   return (
     <PrimerThemeProvider colorMode="dark" theme={theme}>
