@@ -73,96 +73,152 @@ export default function Registro(props) {
       },
     },
   };
-  const [{sesionUsuario}, dispatch] = useStateValue();
+  const [{ sesionUsuario }, dispatch] = useStateValue();
 
   const [usuario, setUsuario] = useState({
-    name : '',
-    email : '',
-    password : '',
-    lastname : ''  
+    name: "",
+    email: "",
+    password: "",
+    lastname: "",
   });
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
-    setUsuario(prev => ({
+    const { name, value } = e.target;
+    setUsuario((prev) => ({
       ...prev,
-      [name] : value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
-  const guardarUsuario =  () => {
-    registrarUsuario(usuario, dispatch).then(response => {
-      window.localStorage.setItem('token', response.data.token);
-      props.history.push('/')
-    })
-  }
+  const guardarUsuario = () => {
+    registrarUsuario(usuario, dispatch).then((response) => {
+      window.localStorage.setItem("token", response.data.token);
+      props.history.push("/");
+    });
+  };
 
   const classes = useStyles();
   return (
-<Box padding={{narrow:'spacious', wide:'spacious', regular:'normal'}} style={{height:'100%',width:'auto', display:'flex', justifyContent:'center'}}>
-    <form style={{borderRadius:20,backgroundColor:'#1f2328', padding:20}}>
+    <Box
+      padding={{ narrow: "spacious", wide: "spacious", regular: "normal" }}
+      style={{
+        height: "100%",
+        width: "auto",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <form
+        style={{ borderRadius: 20, backgroundColor: "#1f2328", padding: 20 }}
+      >
         <Box>
-            <Heading style={{textAlign:'center',color:'#f6f8fa', paddingBottom:'50px', paddingTop:'40px'}}>Crea una Cuenta</Heading>
+          <Heading
+            style={{
+              textAlign: "center",
+              color: "#f6f8fa",
+              paddingBottom: "50px",
+              paddingTop: "40px",
+            }}
+          >
+            Crea una Cuenta
+          </Heading>
         </Box>
-      <Grid  style={{paddingTop:50,borderRadius:30,padding:20,backgroundColor:'#21262d'}} fullWidth >
-
-            <Grid.Column  start={{xsmall:2,small:2, xlarge:2, large:2}} span={{small:2, xsmall:10, medium:2, large:2, xlarge:5 }}>
-              <FormControl   fullWidth>
-                      <TextInput onChange={handleChange} invisible name="name" placeholder="Nombre" />
-              </FormControl>
-            </Grid.Column>
-            <Grid.Column start={{xsmall:2,small:2 }} span={{small:10, xsmall:10, medium:10, large:5, xlarge:5 }}>
-                  <FormControl fullWidth>
-                    <TextInput onChange={handleChange} invisible name="lastname" placeholder="Apellido" />
-                  </FormControl> 
-            </Grid.Column>
-            <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
-                <FormControl fullWidth  >
-                  <TextInput onChange={handleChange} invisible name="email"  placeholder="Correo" />
-                </FormControl>
-            </Grid.Column>
-            <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
-                <FormControl fullWidth  >
-                  <TextInput onChange={handleChange} invisible type="password" name="password" placeholder="Contraseña" />
-                </FormControl>
-            </Grid.Column>
-            <Grid.Column start={{xsmall:2,small:2, xlarge:2 , large:2 }} span={{small:10, xsmall:10, medium:8, large:8, xlarge:10 }}>
-              <Grommet theme={kindButtonTheme}>
+        <Grid
+          style={{
+            paddingTop: 50,
+            borderRadius: 30,
+            padding: 20,
+            backgroundColor: "#21262d",
+          }}
+          fullWidth
+        >
+          <Grid.Column
+            start={{ xsmall: 2, small: 2, xlarge: 2, large: 2 }}
+            span={{ small: 2, xsmall: 10, medium: 2, large: 2, xlarge: 5 }}
+          >
+            <FormControl fullWidth>
+              <TextInput
+                onChange={handleChange}
+                invisible
+                name="name"
+                placeholder="Nombre"
+              />
+            </FormControl>
+          </Grid.Column>
+          <Grid.Column
+            start={{ xsmall: 2, small: 2 }}
+            span={{ small: 10, xsmall: 10, medium: 10, large: 5, xlarge: 5 }}
+          >
+            <FormControl fullWidth>
+              <TextInput
+                onChange={handleChange}
+                invisible
+                name="lastname"
+                placeholder="Apellido"
+              />
+            </FormControl>
+          </Grid.Column>
+          <Grid.Column
+            start={{ xsmall: 2, small: 2, xlarge: 2, large: 2 }}
+            span={{ small: 10, xsmall: 10, medium: 8, large: 8, xlarge: 10 }}
+          >
+            <FormControl fullWidth>
+              <TextInput
+                onChange={handleChange}
+                invisible
+                name="email"
+                placeholder="Correo"
+              />
+            </FormControl>
+          </Grid.Column>
+          <Grid.Column
+            start={{ xsmall: 2, small: 2, xlarge: 2, large: 2 }}
+            span={{ small: 10, xsmall: 10, medium: 8, large: 8, xlarge: 10 }}
+          >
+            <FormControl fullWidth>
+              <TextInput
+                onChange={handleChange}
+                invisible
+                type="password"
+                name="password"
+                placeholder="Contraseña"
+              />
+            </FormControl>
+          </Grid.Column>
+          <Grid.Column
+            start={{ xsmall: 2, small: 2, xlarge: 2, large: 2 }}
+            span={{ small: 10, xsmall: 10, medium: 8, large: 8, xlarge: 10 }}
+          >
+            <Grommet theme={kindButtonTheme}>
               <Box
                 style={{
                   justifyContent: "center",
                   display: "grid",
-                  flexWrap: 'wrap',
+                  flexWrap: "wrap",
                   marginTop: 20,
                 }}
               >
                 <Button
-                  style={{marginBottom:20 ,color: "#f6f8fa", ":active": { color: "white" } }}
+                  style={{
+                    marginBottom: 20,
+                    color: "#f6f8fa",
+                    ":active": { color: "white" },
+                  }}
                   label="Registrarse"
                   primary
                   onClick={guardarUsuario}
                 />
-                <Link to="login" variant='body1' className={classes.link} >¿Ya tienes una Cuenta?</Link>
+                <Link to="login" variant="body1" className={classes.link}>
+                  ¿Ya tienes una Cuenta?
+                </Link>
               </Box>
             </Grommet>
+          </Grid.Column>
+        </Grid>
+      </form>
+    </Box>
 
-            
-
-
-            </Grid.Column>
-            
-      </Grid>
-      
-    </form>
-    
-</Box>
-
-
-
-
-
-
-/* <Box  style={{width: 'auto', display: "flex", justifyContent: "center" }}  >
+    /* <Box  style={{width: 'auto', display: "flex", justifyContent: "center" }}  >
     <Box style={{  display: "flex", justifyContent: "center" }} >
       <Stack
       style={{ backgroundColor: "#24292e",borderRadius: "10px" }}

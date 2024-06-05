@@ -95,7 +95,6 @@ export default function Login(props) {
   };
 
   const loginEventoUsuario = () => {
-
     LoginUsuario(usuario, dispatch).then((response) => {
       if (response.status === 200) {
         window.localStorage.setItem("token", response.data.token);

@@ -25,9 +25,9 @@ const Perfil = () => {
     imagenTemporal: "",
   });
 
-  useEffect(()=> {
-    if(sesionUsuario){
-      setUsuario(sesionUsuario.usuario)
+  useEffect(() => {
+    if (sesionUsuario) {
+      setUsuario(sesionUsuario.usuario);
     }
   }, [sesionUsuario]);
 
