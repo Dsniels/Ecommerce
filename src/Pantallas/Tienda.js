@@ -4,10 +4,6 @@ import { Pagination } from "@primer/react";
 import { getProductos } from "../Actions/ProductoAction";
 
 export default function Tienda(props) {
-
-
-
-  
   const [requestProductos, setRequestProductos] = useState({
     page: 1,
     pageSize: 4,
@@ -57,9 +53,9 @@ export default function Tienda(props) {
         <Box
           style={{
             display: "flex",
-            marginTop : 30,
+            marginTop: 30,
             alignItems: "center",
-            justifyContent: 'space-around',
+            justifyContent: "space-around",
           }}
         >
           {paginador.data.map((data) => (
