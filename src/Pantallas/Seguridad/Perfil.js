@@ -9,12 +9,29 @@ import {
   Stack,
   TextInput,
 } from "@primer/react-brand";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GitCommitIcon } from "@primer/octicons-react";
 import { useStateValue } from "../../Context/store";
 
 const Perfil = () => {
   const [{ sesionUsuario }, dispatch] = useStateValue();
+
+  const [usuario, setUsuario] = useState({
+    _id: "",
+    name: "",
+    password: "",
+    image: "",
+    email: "",
+    imagenTemporal: "",
+  });
+
+  useEffect(() => {
+    if (sesionUsuario) {
+      console.log(sesionUsuario);
+      setUsuario(sesionUsuario.usuario);
+      console.log(usuario);
+    }
+  }, [sesionUsuario]);
 
   return (
     <PageLayout sx={{ height: "1080px" }} columnGap="30px" rowGap="30px">
@@ -74,10 +91,8 @@ const Perfil = () => {
             <Image
               style={{ borderRadius: "50%", width: 100, height: 100 }}
               src={
-                sesionUsuario
-                  ? sesionUsuario.usuario.image
-                    ? sesionUsuario.usuario.image
-                    : "https://avatars.githubusercontent.com/u/92997159?v=4"
+                usuario.image
+                  ? usuario.image
                   : "https://avatars.githubusercontent.com/u/92997159?v=4"
               }
             />
@@ -87,18 +102,14 @@ const Perfil = () => {
               <TextInput
                 style={{ backgroundColor: "transparent" }}
                 size="auto"
-                value={sesionUsuario ? sesionUsuario.usuario.name : "No sesion"}
+                value={usuario.name}
                 disabled={true}
               />
               <FormControl.Label>Email</FormControl.Label>
               <TextInput
                 style={{ backgroundColor: "transparent" }}
                 size="large"
-                value={
-                  sesionUsuario
-                    ? sesionUsuario.usuario.email
-                    : "daniel@outlook.com"
-                }
+                value={usuario.email}
                 type="email"
                 disabled={true}
                 ty

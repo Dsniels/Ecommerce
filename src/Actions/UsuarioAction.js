@@ -83,8 +83,9 @@ export const LoginUsuario = (usuario, dispatch) => {
 
 export const GetUsuario = (dispatch) => {
   return new Promise((resolve, eject) => {
-    HttpCliente.get("/api/usuario")
+    HttpCliente.get("/api/users/perfil")
       .then((response) => {
+        console.log("response perfil", response.data);
         dispatch({
           type: "INICIAR_SESION",
           sesion: response.data,
