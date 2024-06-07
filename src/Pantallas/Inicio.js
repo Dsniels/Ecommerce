@@ -30,12 +30,10 @@ const Inicio = (props) => {
         },
       })
         .then((response) => {
-
           if (response.status === 200) return response.json();
           throw new Error("Application failed");
         })
         .then((res) => {
-
           dispatch({
             type: "INICIAR_SESION",
             sesion: res.user,

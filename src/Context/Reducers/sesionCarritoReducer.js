@@ -4,7 +4,7 @@ export const initialState = {
 };
 
 const SesionCarritoReducer = (state = initialState, action) => {
-  console.log(action)
+  console.log(action);
   switch (action.type) {
     case "CARRITO_SESION":
       return {
