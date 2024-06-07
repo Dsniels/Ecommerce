@@ -29,29 +29,26 @@ function App() {
     },
   });
   const [{ sesionUsuario }, dispatch] = useStateValue();
-  const [{sesionCarrito}, carritoDispatch] = useStateValue()
+  const [{ sesionCarrito }, carritoDispatch] = useStateValue();
   const [servidorResponse, setServidorResponse] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      let carritoId = window.localStorage.getItem("carrito");
 
-      let carritoId = window.localStorage.getItem('carrito');
-
-      if(!carritoId){
+      if (!carritoId) {
         carritoId = uuidv4();
-        window.localStorage.setItem('carrito',carritoId)
+        window.localStorage.setItem("carrito", carritoId);
       }
 
       if (!servidorResponse) {
         await GetUsuario(dispatch);
-        await getCarrito(carritoDispatch, carritoId)
+        await getCarrito(carritoDispatch, carritoId);
         setServidorResponse(true);
       }
     };
 
     fetchData();
-
-  }, [servidorResponse, dispatch]); 
-
+  }, [servidorResponse, dispatch]);
 
   return (
     <PrimerThemeProvider colorMode="dark" theme={theme}>

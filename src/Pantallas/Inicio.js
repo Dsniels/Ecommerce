@@ -42,11 +42,10 @@ const Inicio = (props) => {
           window.localStorage.setItem("token", res.user.token);
         });
     };
-    if(!servidorResponse){
-          getuser(); 
-          setServidorResponse(true)     
+    if (!servidorResponse) {
+      getuser();
+      setServidorResponse(true);
     }
-
   }, [servidorResponse]);
 
   const classes = useStyles();

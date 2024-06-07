@@ -70,7 +70,11 @@ const CarritoCompras = (props) => {
             >
               <Box>
                 <Image
-                  src={item.image ? item.image : "https://avatars.githubusercontent.com/u/92997159?v=4"}
+                  src={
+                    item.image
+                      ? item.image
+                      : "https://avatars.githubusercontent.com/u/92997159?v=4"
+                  }
                   width={40}
                   height={40}
                 />
@@ -85,26 +89,32 @@ const CarritoCompras = (props) => {
                     justifyContent: "center",
                   }}
                 >
-                  <IconButton
-                    variant="invisible"
-                    icon={NoEntryIcon}
-                    
-                  />
+                  <IconButton variant="invisible" icon={NoEntryIcon} />
                   {item.quantity}
                 </Box>
               </Box>
-              <IconButton variant="invisible" onClick={() => EliminarItem(item)} icon={TrashIcon} />
+              <IconButton
+                variant="invisible"
+                onClick={() => EliminarItem(item)}
+                icon={TrashIcon}
+              />
             </Grid.Column>
           ))}
         </Grid>
       </PageLayout.Content>
       <PageLayout.Pane
         divider="line"
-        sx={{display:'flex', justifyContent:'center' ,borderRadius: 20, marginTop: 20, backgroundColor: "#24292e" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          borderRadius: 20,
+          marginTop: 20,
+          backgroundColor: "#24292e",
+        }}
         position={{ narrow: "start", regular: "end", wide: "end" }}
-        width="large" 
+        width="large"
       >
-        <Grid  fullWidth>
+        <Grid fullWidth>
           <Grid.Column
             style={{ justifyContent: "center", display: "flex", margin: 25 }}
             start={2}
