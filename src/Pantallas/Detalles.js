@@ -5,11 +5,12 @@ import React, { useEffect, useState } from "react";
 import { getProducto } from "../Actions/ProductoAction";
 import { addItem } from "../Actions/CarritoActions";
 import { useStateValue } from "../Context/store";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Detalles = (props) => {
   const [cantidad, setCantidad] = useState(1);
   const [{ sesionCarrito }, dispatch] = useStateValue();
-
+  const history = useHistory()
   const [productoSeleccionado, setProductoSeleccionado] = useState({
     _id: 0,
     name: "",
@@ -46,10 +47,10 @@ const Detalles = (props) => {
     };
     console.log(item)
 
-    await addItem(sesionCarrito, item, dispatch);
+    await addItem(sesionCarrito, item, dispatch)
+
 
   };
-  console.log(cantidad)
 
   const regresar = () => {
     props.history.push("/Tienda");

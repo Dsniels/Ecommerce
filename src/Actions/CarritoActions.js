@@ -9,6 +9,7 @@ export const getCarrito = (dispatch, id) => {
   return new Promise((resolve, eject) => {
     HttpCliente.get(`/api/carrito/${id}`)
       .then((response) => {
+        console.log(response)
         dispatch({
           type: "CARRITO_SESION",
           id: response.data.id,

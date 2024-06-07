@@ -1,6 +1,6 @@
 import React from "react";
 import useStyles from "../../Themes/useStyles";
-import { ActionList, ActionMenu, Avatar, Octicon } from "@primer/react";
+import { ActionList, ActionMenu, Avatar, Button, Octicon } from "@primer/react";
 import {
   PasteIcon,
   PersonIcon,

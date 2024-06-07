@@ -126,29 +126,6 @@ const Perfil = () => {
             </FormControl>
           </Stack>
         </Box>
-        {/* <Box style={{width:'100%'}}>
-          <Timeline >
-            <Heading style={{margin:10, paddingBottom:20}}>Mis pedidos</Heading>
-            <Timeline.Item>
-              <Timeline.Badge>
-                <Octicon icon={GitCommitIcon} />
-              </Timeline.Badge>
-              <Timeline.Body>This is a message </Timeline.Body>
-            </Timeline.Item>
-            <Timeline.Item>
-              <Timeline.Badge>
-                <Octicon icon={GitCommitIcon} />
-              </Timeline.Badge>
-              <Timeline.Body>This is a message</Timeline.Body>
-            </Timeline.Item>
-            <Timeline.Item>
-              <Timeline.Badge>
-                <Octicon icon={GitCommitIcon} />
-              </Timeline.Badge>
-              <Timeline.Body>This is a message</Timeline.Body>
-            </Timeline.Item>
-          </Timeline>
-        </Box> */}
       </PageLayout.Pane>
       <PageLayout.Content
         width="medium"
