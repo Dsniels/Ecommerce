@@ -5,11 +5,12 @@ import React, { useEffect, useState } from "react";
 import { getProducto } from "../Actions/ProductoAction";
 import { addItem } from "../Actions/CarritoActions";
 import { useStateValue } from "../Context/store";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Detalles = (props) => {
   const [cantidad, setCantidad] = useState(1);
   const [{ sesionCarrito }, dispatch] = useStateValue();
-
+  const history = useHistory();
   const [productoSeleccionado, setProductoSeleccionado] = useState({
     _id: 0,
     name: "",
@@ -27,9 +28,9 @@ const Detalles = (props) => {
     const id = props.match.params.id;
     const getProductoAsync = async () => {
       const response = await getProducto(id);
-      console.log('Response item',response)
+      console.log("Response item", response);
       setProductoSeleccionado(response.data);
-      console.log('Porducto selecct', productoSeleccionado);
+      console.log("Porducto selecct", productoSeleccionado);
     };
 
     getProductoAsync();
@@ -44,12 +45,10 @@ const Detalles = (props) => {
       imagen: productoSeleccionado.imagen,
       unit_amount: productoSeleccionado.precio,
     };
-    console.log(item)
+    console.log(item);
 
     await addItem(sesionCarrito, item, dispatch);
-
   };
-  console.log(cantidad)
 
   const regresar = () => {
     props.history.push("/Tienda");

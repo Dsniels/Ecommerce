@@ -18,7 +18,8 @@ import ProcesoCompra from "./Pantallas/ProcesoCompra";
 import { useStateValue } from "./Context/store";
 import { useEffect, useState } from "react";
 import { GetUsuario } from "./Actions/UsuarioAction";
-
+import { getCarrito } from "./Actions/CarritoActions";
+import { v4 as uuidv4 } from "uuid";
 function App() {
   const themeMui = createTheme({
     palette: {
@@ -28,17 +29,26 @@ function App() {
     },
   });
   const [{ sesionUsuario }, dispatch] = useStateValue();
+  const [{ sesionCarrito }, carritoDispatch] = useStateValue();
   const [servidorResponse, setServidorResponse] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      let carritoId = window.localStorage.getItem("carrito");
+
+      if (!carritoId) {
+        carritoId = uuidv4();
+        window.localStorage.setItem("carrito", carritoId);
+      }
+
       if (!servidorResponse) {
         await GetUsuario(dispatch);
+        await getCarrito(carritoDispatch, carritoId);
         setServidorResponse(true);
       }
     };
 
     fetchData();
-  }, [servidorResponse]); 
+  }, [servidorResponse, dispatch]);
 
   return (
     <PrimerThemeProvider colorMode="dark" theme={theme}>
@@ -55,13 +65,10 @@ function App() {
             <Route exact path="/Tienda" component={Tienda} />
             <Route exact path="/Detalles/:id" component={Detalles} />
             <Route exact path="/Perfil" component={Perfil} />
-
             <Route exact path="/Registro" component={Registro} />
             <Route exact path="/Login" component={Login} />
             <Route exact path="/Carrito" component={CarritoCompras} />
-
             <Route exact path="/ProcesoCompra" component={ProcesoCompra} />
-
             <Redirect from="/" to="/Inicio" />
           </Switch>
         </Router>

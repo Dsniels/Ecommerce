@@ -2,11 +2,11 @@ import { FeedPlusIcon, NoEntryIcon, TrashIcon } from "@primer/octicons-react";
 import { Heading, IconButton, PageLayout } from "@primer/react";
 import { Box, Button, Grid, Image, Text } from "@primer/react-brand";
 import React from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useHistory, withRouter } from "react-router-dom/cjs/react-router-dom";
 import { useStateValue } from "../Context/store";
 import { deleteItem } from "../Actions/CarritoActions";
 
-export default function CarritoCompras(props) {
+const CarritoCompras = (props) => {
   const history = useHistory();
   const ProcesoCompra = () => {
     history.push("/ProcesoCompra");
@@ -19,7 +19,7 @@ export default function CarritoCompras(props) {
 
     if (indice !== -1) {
       await deleteItem(sesionCarrito, indice, dispatch);
-      props.history.push("/Carriot");
+      props.history.push("/Carrito");
     } else {
       console.log("Algo salio mal");
     }
@@ -36,7 +36,7 @@ export default function CarritoCompras(props) {
 
   return (
     <PageLayout
-      sx={{ padding: 20, color: "white", backgroundColor: "#32383f" }}
+      sx={{ padding: 20, color: "white", backgroundColor: "#0d1117" }}
       containerWidth="large"
     >
       <PageLayout.Content
@@ -70,7 +70,11 @@ export default function CarritoCompras(props) {
             >
               <Box>
                 <Image
-                  src="https://avatars.githubusercontent.com/u/92997159?v=4"
+                  src={
+                    item.image
+                      ? item.image
+                      : "https://avatars.githubusercontent.com/u/92997159?v=4"
+                  }
                   width={40}
                   height={40}
                 />
@@ -85,22 +89,28 @@ export default function CarritoCompras(props) {
                     justifyContent: "center",
                   }}
                 >
-                  <IconButton
-                    variant="invisible"
-                    icon={NoEntryIcon}
-                    onClick={EliminarItem(item)}
-                  />{" "}
+                  <IconButton variant="invisible" icon={NoEntryIcon} />
                   {item.quantity}
                 </Box>
               </Box>
-              <IconButton variant="invisible" icon={TrashIcon} />
+              <IconButton
+                variant="invisible"
+                onClick={() => EliminarItem(item)}
+                icon={TrashIcon}
+              />
             </Grid.Column>
           ))}
         </Grid>
       </PageLayout.Content>
       <PageLayout.Pane
         divider="line"
-        sx={{ borderRadius: 20, marginTop: 20, backgroundColor: "#24292e" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          borderRadius: 20,
+          marginTop: 20,
+          backgroundColor: "#24292e",
+        }}
         position={{ narrow: "start", regular: "end", wide: "end" }}
         width="large"
       >
@@ -172,4 +182,6 @@ export default function CarritoCompras(props) {
       </PageLayout.Pane>
     </PageLayout>
   );
-}
+};
+
+export default withRouter(CarritoCompras);

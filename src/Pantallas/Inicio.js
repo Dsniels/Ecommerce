@@ -13,10 +13,11 @@ import { Box } from "@primer/react";
 import { useStateValue } from "../Context/store";
 import { googleAuth } from "../Actions/UsuarioAction";
 import { TrackChangesOutlined } from "@material-ui/icons";
+import { useState } from "react";
 
 const Inicio = (props) => {
   const [{ sesionUsuario }, dispatch] = useStateValue();
-
+  const [servidorResponse, setServidorResponse] = useState(false);
   useEffect(() => {
     const getuser = async () => {
       fetch("http://localhost:8080/api/users/login/done", {
@@ -29,12 +30,10 @@ const Inicio = (props) => {
         },
       })
         .then((response) => {
-
           if (response.status === 200) return response.json();
           throw new Error("Application failed");
         })
         .then((res) => {
-
           dispatch({
             type: "INICIAR_SESION",
             sesion: res.user,
@@ -43,8 +42,11 @@ const Inicio = (props) => {
           window.localStorage.setItem("token", res.user.token);
         });
     };
-    getuser();
-  }, []);
+    if (!servidorResponse) {
+      getuser();
+      setServidorResponse(true);
+    }
+  }, [servidorResponse]);
 
   const classes = useStyles();
 
