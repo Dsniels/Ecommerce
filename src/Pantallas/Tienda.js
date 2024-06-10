@@ -28,8 +28,7 @@ export default function Tienda(props) {
   useEffect(() => {
     const getListaProductos = async () => {
       const response = await getProductos(requestProductos);
-      console.log(response.data);
-      console.log(paginador);
+
       setPaginador((prev) => ({ ...prev, data: response.data }));
     };
 
@@ -58,7 +57,7 @@ export default function Tienda(props) {
             justifyContent: "space-around",
           }}
         >
-          {paginador.data.map((data) => (
+          {paginador.data ? paginador.data.map((data) => (
             <Card
               ctaText="Detalles"
               onClick={() => detalles(data)}
@@ -83,7 +82,7 @@ export default function Tienda(props) {
                 ${data.precio}
               </Card.Description>
             </Card>
-          ))}
+          )) : <h1>cargando</h1>}
         </Box>
       </ThemeProvider>
       <Pagination

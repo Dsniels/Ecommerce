@@ -20,34 +20,41 @@ const Inicio = (props) => {
   const [servidorResponse, setServidorResponse] = useState(false);
   useEffect(() => {
     const getuser = async () => {
-      fetch("http://localhost:8080/api/users/login/done", {
+      await fetch(`${process.env.REACT_APP_URL_BASE}/api/users/login/done`, {
         method: "GET",
         credentials: "include",
         headers: {
-          Accept: "application/json",
+         'Accept': "application/json",
           "Content-Type": "application/json",
-          "Access-Controll-Allow-Credentials": true,
+          "Access-Control-Allow-Credentials": true,
         },
       })
         .then((response) => {
+          console.log(response)
           if (response.status === 200) return response.json();
           throw new Error("Application failed");
         })
         .then((res) => {
+          console.log("🚀 ~ .then ~ res:", res)
+          
           dispatch({
             type: "INICIAR_SESION",
             sesion: res.user,
             autenticado: true,
           });
+                
           window.localStorage.setItem("token", res.user.token);
-        });
+        }).catch(error=>{console.log(error)})
+      setServidorResponse(true)
     };
     if(!servidorResponse){
+      console.log(1);
           getuser(); 
-          setServidorResponse(true)     
+      console.log(2)
+    
     }
 
-  }, [servidorResponse]);
+  }, [servidorResponse,dispatch]);
 
   const classes = useStyles();
 
