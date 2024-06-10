@@ -12,7 +12,7 @@ export const initialState = {
 }
  
 const SesionDireccionReducer = (state = initialState, action) => {
-    console.log("🚀 ~ SesionDireccionReducer ~ action:", action)
+
 
     switch(action.type){
         case'SET_DIRECCION':

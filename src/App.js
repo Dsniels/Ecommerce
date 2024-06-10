@@ -31,25 +31,21 @@ function App() {
     },
   });
   const [{ sesionUsuario, sesionDireccion }, dispatch] = useStateValue();
-  console.log("🚀 ~ App ~ sesionDireccion:", sesionDireccion)
-  console.log("🚀 ~ App ~ sesionUsuario:", sesionUsuario)
+
   const [{sesionCarrito}, carritoDispatch] = useStateValue();
   const [servidorResponse, setServidorResponse] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      let carritoId = window.localStorage.getItem("carrito");
 
-      let carritoId = window.localStorage.getItem('carrito');
-
-      if(!carritoId){
+      if (!carritoId) {
         carritoId = uuidv4();
-        window.localStorage.setItem('carrito',carritoId)
+        window.localStorage.setItem("carrito", carritoId);
       }
 
       if (!servidorResponse) {
         await GetUsuario(dispatch);
-        //await getCarrito(carritoDispatch, carritoId)
-        await getDireccion(dispatch);
-        console.log('jkdjaskndklasnd')
+        await getCarrito(carritoDispatch, carritoId)
         setServidorResponse(true);
       }
   console.log("🚀 ~ App ~ sesionDireccion:", sesionDireccion)
@@ -60,7 +56,7 @@ function App() {
 
   }, [servidorResponse, dispatch]); 
 const initialOptions = {
-    clientId: "Ab-Z0XeUNQMmR380a3beSsOoJgTd7TJD6gychwiwXQWBEu0E5Eu3LIveOrbgy-5p514phQA8eb5bpQco",
+    clientId: process.env.paypalID,
     currency: "MXN",
     intent: "capture",
 };

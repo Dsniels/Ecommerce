@@ -1,5 +1,5 @@
-import HttpCliente from '../Servicios/HttpCliente'
-import axios from 'axios'
+import HttpCliente from "../Servicios/HttpCliente";
+import axios from "axios";
 
 export const setDireccionUsuario = (direccion, dispatch) =>{
     return new Promise((resolve, reject)=>{
@@ -14,7 +14,7 @@ export const setDireccionUsuario = (direccion, dispatch) =>{
 }
 
 export const getDireccion = (dispatch) => {
-    console.log("🚀 ~ getDireccion ~ dispatch:", dispatch)
+
     return new Promise((resolve, reject) => {
         HttpCliente.get('/api/direccion/').then(response => {
             dispatch({

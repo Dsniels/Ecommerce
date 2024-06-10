@@ -47,14 +47,13 @@ const Inicio = (props) => {
         }).catch(error=>{console.log(error)})
       setServidorResponse(true)
     };
-    if(!servidorResponse){
-      console.log(1);
-          getuser(); 
-      console.log(2)
-    
-    }
 
-  }, [servidorResponse,dispatch]);
+    if (!servidorResponse) {
+      getuser();
+      setServidorResponse(true);
+    }
+  }, [servidorResponse]);
+
 
   const classes = useStyles();
 
