@@ -20,6 +20,8 @@ import { useEffect, useState } from "react";
 import { GetUsuario } from "./Actions/UsuarioAction";
 import { getCarrito } from "./Actions/CarritoActions";
 import { v4 as uuidv4 } from "uuid";
+import { getDireccion } from "./Actions/DireccionAction";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 function App() {
   const themeMui = createTheme({
     palette: {
@@ -28,7 +30,8 @@ function App() {
       },
     },
   });
-  const [{ sesionUsuario }, dispatch] = useStateValue();
+  const [{ sesionUsuario, sesionDireccion }, dispatch] = useStateValue();
+
   const [{ sesionCarrito }, carritoDispatch] = useStateValue();
   const [servidorResponse, setServidorResponse] = useState(false);
   useEffect(() => {
@@ -45,35 +48,44 @@ function App() {
         await getCarrito(carritoDispatch, carritoId);
         setServidorResponse(true);
       }
+      console.log("🚀 ~ App ~ sesionDireccion:", sesionDireccion);
     };
 
     fetchData();
   }, [servidorResponse, dispatch]);
+  const initialOptions = {
+    clientId: process.env.PAYPALID,
+    currency: "MXN",
+    intent: "capture",
+  };
 
   return (
-    <PrimerThemeProvider colorMode="dark" theme={theme}>
-      <PrimerBrandThemeProvider
-        style={{
-          backgroundColor: "var(--brand-color-canvas-default)",
-        }}
-        colorMode="dark"
-      >
-        <Router>
-          <MenuBar />
-          <Switch>
-            <Route exact path="/Inicio" component={Inicio} />
-            <Route exact path="/Tienda" component={Tienda} />
-            <Route exact path="/Detalles/:id" component={Detalles} />
-            <Route exact path="/Perfil" component={Perfil} />
-            <Route exact path="/Registro" component={Registro} />
-            <Route exact path="/Login" component={Login} />
-            <Route exact path="/Carrito" component={CarritoCompras} />
-            <Route exact path="/ProcesoCompra" component={ProcesoCompra} />
-            <Redirect from="/" to="/Inicio" />
-          </Switch>
-        </Router>
-      </PrimerBrandThemeProvider>
-    </PrimerThemeProvider>
+    <PayPalScriptProvider options={initialOptions}>
+      <PrimerThemeProvider colorMode="dark" theme={theme}>
+        <PrimerBrandThemeProvider
+          style={{
+            backgroundColor: "var(--brand-color-canvas-default)",
+          }}
+          colorMode="dark"
+        >
+          <Router>
+            <MenuBar />
+
+            <Switch>
+              <Route exact path="/Inicio" component={Inicio} />
+              <Route exact path="/Tienda" component={Tienda} />
+              <Route exact path="/Detalles/:id" component={Detalles} />
+              <Route exact path="/Perfil" component={Perfil} />
+              <Route exact path="/Registro" component={Registro} />
+              <Route exact path="/Login" component={Login} />
+              <Route exact path="/Carrito" component={CarritoCompras} />
+              <Route exact path="/ProcesoCompra" component={ProcesoCompra} />
+              <Redirect from="/" to="/Inicio" />
+            </Switch>
+          </Router>
+        </PrimerBrandThemeProvider>
+      </PrimerThemeProvider>
+    </PayPalScriptProvider>
   );
 }
 

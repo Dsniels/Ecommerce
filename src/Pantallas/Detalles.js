@@ -28,14 +28,12 @@ const Detalles = (props) => {
     const id = props.match.params.id;
     const getProductoAsync = async () => {
       const response = await getProducto(id);
-      console.log("Response item", response);
+
       setProductoSeleccionado(response.data);
-      console.log("Porducto selecct", productoSeleccionado);
     };
 
     getProductoAsync();
   }, [setProductoSeleccionado]);
-  console.log(sesionCarrito);
   const agregarCarrito = async () => {
     const item = {
       id: productoSeleccionado._id,
@@ -43,9 +41,11 @@ const Detalles = (props) => {
       price: productoSeleccionado.precio,
       quantity: cantidad,
       imagen: productoSeleccionado.imagen,
-      unit_amount: productoSeleccionado.precio,
+      unit_amount: {
+        currency_code: "MXN",
+        value: productoSeleccionado.precio,
+      },
     };
-    console.log(item);
 
     await addItem(sesionCarrito, item, dispatch);
   };

@@ -7,6 +7,7 @@ export const initialState = {
     Colonia: "",
     Pais: "",
     User: "",
+    __v: "",
   },
 };
 
@@ -15,7 +16,7 @@ const SesionDireccionReducer = (state = initialState, action) => {
     case "SET_DIRECCION":
       return {
         ...state,
-        direccion: action.sesion,
+        direccion: action.session,
       };
     default:
       return state;

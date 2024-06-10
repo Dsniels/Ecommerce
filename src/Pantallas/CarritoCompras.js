@@ -173,7 +173,7 @@ const CarritoCompras = (props) => {
               block
               size="medium"
               variant="primary"
-              onClick={ProcesoCompra}
+              onClick={array.length !== -1 ? ProcesoCompra : () => {}}
             >
               Comprar
             </Button>

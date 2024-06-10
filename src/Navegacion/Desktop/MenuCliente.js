@@ -32,7 +32,7 @@ const MenuCliente = (props) => {
 
   const salirSesion = (e) => {
     e.preventDefault();
-    window.open("http://localhost:8080/api/users/logout", "_self");
+    window.open(`${process.env.REACT_APP_URL_BASE}/api/users/logout`, "_self");
 
     localStorage.removeItem("token");
     dispatch({

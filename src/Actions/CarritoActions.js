@@ -9,7 +9,6 @@ export const getCarrito = (dispatch, id) => {
   return new Promise((resolve, eject) => {
     HttpCliente.get(`/api/carrito/${id}`)
       .then((response) => {
-        console.log(response);
         dispatch({
           type: "CARRITO_SESION",
           id: response.data.id,
@@ -27,7 +26,6 @@ export const setCarrito = (dispatch, carritoCompra) => {
   return new Promise((resolve, eject) => {
     HttpCliente.post(`/api/carrito`, carritoCompra)
       .then((response) => {
-        console.log("response carrito", response);
         dispatch({
           type: "CARRITO_SESION",
           id: response.data.id,
@@ -46,7 +44,6 @@ export const deleteItem = (carrito, indice, dispatch) => {
 };
 
 export const addItem = (carrito, item, dispatch) => {
-  console.log("carrito items", carrito, carrito.items);
   if (!carrito.items) {
     carrito.items = [];
   }

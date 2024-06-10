@@ -7,6 +7,7 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.57",
+    "@paypal/react-paypal-js": "^8.3.0",
     "@primer/css": "^21.2.2",
     "@primer/octicons-react": "^19.9.0",
     "@primer/react": "^36.12.0",
@@ -54,5 +55,6 @@
     "gh-pages": "^6.1.1",
     "react-scripts": "^5.0.1",
     "webpack-dev-server": "^5.0.4"
-  }
+  },
+  "proxy": "https://expressapiecommerce.azurewebsites.net"
 }
