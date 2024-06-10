@@ -20,6 +20,8 @@ import { useEffect, useState } from "react";
 import { GetUsuario } from "./Actions/UsuarioAction";
 import { getCarrito } from "./Actions/CarritoActions";
 import { v4 as uuidv4 } from "uuid";
+import { getDireccion } from "./Actions/DireccionAction";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 function App() {
   const themeMui = createTheme({
     palette: {
@@ -28,8 +30,10 @@ function App() {
       },
     },
   });
-  const [{ sesionUsuario }, dispatch] = useStateValue();
-  const [{sesionCarrito}, carritoDispatch] = useStateValue()
+  const [{ sesionUsuario, sesionDireccion }, dispatch] = useStateValue();
+  console.log("🚀 ~ App ~ sesionDireccion:", sesionDireccion)
+  console.log("🚀 ~ App ~ sesionUsuario:", sesionUsuario)
+  const [{sesionCarrito}, carritoDispatch] = useStateValue();
   const [servidorResponse, setServidorResponse] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
@@ -43,17 +47,26 @@ function App() {
 
       if (!servidorResponse) {
         await GetUsuario(dispatch);
-        await getCarrito(carritoDispatch, carritoId)
+        //await getCarrito(carritoDispatch, carritoId)
+        await getDireccion(dispatch);
+        console.log('jkdjaskndklasnd')
         setServidorResponse(true);
       }
+  console.log("🚀 ~ App ~ sesionDireccion:", sesionDireccion)
+
     };
 
     fetchData();
 
   }, [servidorResponse, dispatch]); 
-
+const initialOptions = {
+    clientId: "Ab-Z0XeUNQMmR380a3beSsOoJgTd7TJD6gychwiwXQWBEu0E5Eu3LIveOrbgy-5p514phQA8eb5bpQco",
+    currency: "MXN",
+    intent: "capture",
+};
 
   return (
+    <PayPalScriptProvider options={initialOptions}>
     <PrimerThemeProvider colorMode="dark" theme={theme}>
       <PrimerBrandThemeProvider
         style={{
@@ -63,6 +76,7 @@ function App() {
       >
         <Router>
           <MenuBar />
+          
           <Switch>
             <Route exact path="/Inicio" component={Inicio} />
             <Route exact path="/Tienda" component={Tienda} />
@@ -77,6 +91,7 @@ function App() {
         </Router>
       </PrimerBrandThemeProvider>
     </PrimerThemeProvider>
+          </PayPalScriptProvider>
   );
 }
 

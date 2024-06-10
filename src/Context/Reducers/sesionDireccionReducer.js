@@ -7,16 +7,18 @@ export const initialState = {
         Colonia : '',
         Pais : '',
         User : "",
+        __v:''
     }
 }
-
-const SesionDireccionReducer = (state = initialState, action) =>{
+ 
+const SesionDireccionReducer = (state = initialState, action) => {
+    console.log("🚀 ~ SesionDireccionReducer ~ action:", action)
 
     switch(action.type){
         case'SET_DIRECCION':
             return{
                 ...state,
-                direccion : action.sesion
+                direccion : action.session
             };
         default : return state
     }
