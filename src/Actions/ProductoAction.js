@@ -8,7 +8,7 @@ export const getProductos = (request) => {
         `/api/productos?page=${request.pageIndex}&pageSize=${request.pageSize}`,
       )
       .then((response) => {
-        console.log("response:", response);
+
         resolve(response);
       });
   });
