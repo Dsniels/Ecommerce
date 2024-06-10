@@ -56,7 +56,7 @@ function App() {
 
   }, [servidorResponse, dispatch]); 
 const initialOptions = {
-    clientId: process.env.paypalID,
+    clientId: process.env.PAYPALID,
     currency: "MXN",
     intent: "capture",
 };
