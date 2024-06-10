@@ -42,8 +42,8 @@ const Detalles = (props) => {
       quantity: cantidad,
       imagen: productoSeleccionado.imagen,
       unit_amount: {
-        currency_code : 'MXN',
-        value : productoSeleccionado.precio
+        currency_code: "MXN",
+        value: productoSeleccionado.precio,
       },
     };
 

@@ -4,7 +4,6 @@ export const initialState = {
 };
 
 const SesionCarritoReducer = (state = initialState, action) => {
-
   switch (action.type) {
     case "CARRITO_SESION":
       return {
