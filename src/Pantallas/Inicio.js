@@ -24,28 +24,31 @@ const Inicio = (props) => {
         method: "GET",
         credentials: "include",
         headers: {
-         'Accept': "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
         },
       })
         .then((response) => {
-          console.log(response)
+          console.log(response);
           if (response.status === 200) return response.json();
           throw new Error("Application failed");
         })
         .then((res) => {
-          console.log("🚀 ~ .then ~ res:", res)
-          
+          console.log("🚀 ~ .then ~ res:", res);
+
           dispatch({
             type: "INICIAR_SESION",
             sesion: res.user,
             autenticado: true,
           });
-                
+
           window.localStorage.setItem("token", res.user.token);
-        }).catch(error=>{console.log(error)})
-      setServidorResponse(true)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      setServidorResponse(true);
     };
 
     if (!servidorResponse) {
@@ -53,7 +56,6 @@ const Inicio = (props) => {
       setServidorResponse(true);
     }
   }, [servidorResponse]);
-
 
   const classes = useStyles();
 

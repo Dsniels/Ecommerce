@@ -1,10 +1,10 @@
 import HttpCliente from "../Servicios/HttpCliente";
 import axios from "axios";
 
-const instancia = axios.create({  
-   withCredentials: true,
-   baseURL: process.env.REACT_APP_URL_BASE
-  });
+const instancia = axios.create({
+  withCredentials: true,
+  baseURL: process.env.REACT_APP_URL_BASE,
+});
 
 instancia.CancelToken = axios.CancelToken;
 instancia.isCancel = axios.isCancel;
@@ -103,9 +103,9 @@ export const GetUsuario = (dispatch) => {
 export const googleAuth = (dispatch) => {
   return new Promise((resolve, eject) => {
     instancia
-      .get(`/api/users/login/done`,{withCredentials:true})
+      .get(`/api/users/login/done`, { withCredentials: true })
       .then((response) => {
-        console.log("🚀 ~ .then ~ response:", response)
+        console.log("🚀 ~ .then ~ response:", response);
         dispatch({
           type: "INICIAR_SESION",
           sesion: response.data,
@@ -114,7 +114,7 @@ export const googleAuth = (dispatch) => {
         resolve(response);
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         resolve(error);
       });
   });

@@ -169,7 +169,7 @@ const CarritoCompras = (props) => {
             start={{ xlarge: 1, xxlarge: 1, large: 1, small: 2, xsmall: 2 }}
             span={{ small: 10, xsmall: 10, xxlarge: 7, large: 7, xlarge: 7 }}
           >
-            <Button  
+            <Button
               block
               size="medium"
               variant="primary"
